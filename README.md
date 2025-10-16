@@ -8,7 +8,9 @@ A beautiful, accessible React component library built on Radix UI primitives and
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 [![GitHub Stars](https://img.shields.io/github/stars/arif-js/Raditail-UI.svg)](https://github.com/arif-js/Raditail-UI)
 
-[View Components on Storybook](#) • [Documentation](./packages/raditail/README.md) • [Report Bug](https://github.com/arif-js/Raditail-UI/issues)
+[![View Storybook](https://img.shields.io/badge/Storybook-Live-blue)](https://raditail-storybook.vercel.app)
+[![Documentation](https://img.shields.io/badge/Docs-Package%20Guide-success)](./packages/raditail/README.md)
+[![Report Issue](https://img.shields.io/badge/GitHub-Issue%20Tracker-red)](https://github.com/arif-js/Raditail-UI/issues)
 
 </div>
 
@@ -45,7 +47,7 @@ Raditail requires the following peer dependencies:
 npm install react react-dom tailwindcss
 ```
 
-Individual Radix UI components are peer dependencies and will be installed as needed. See the [full peer dependencies list](./packages/raditail/package.json#L48-L76).
+Raditail keeps Radix primitives as peer dependencies so you can choose the ones you need. See the [full peer dependency list](./packages/raditail/package.json).
 
 ## Quick Start
 
@@ -128,11 +130,9 @@ Or use `data-theme="dark"` attribute:
 
 ## Explore Components
 
-Visit our Storybook to explore all components with live examples and interactive controls:
+Visit our hosted Storybook to explore every component with live controls:
 
-**[View Storybook →](#)**
-
-_(Deploy your Storybook to Vercel and add the link here)_
+**[Play with the components →](https://raditail-storybook.vercel.app)**
 
 ## Monorepo Structure
 
@@ -164,22 +164,15 @@ pnpm dev
 
 ### Useful Scripts
 
-```bash
-# Start Storybook for component development
-pnpm storybook
-
-# Build the component library
-pnpm --filter raditail build
-
-# Run tests
-pnpm --filter raditail test
-
-# Run linting
-pnpm lint
-
-# Type checking
-pnpm typecheck
-```
+| Command                                  | Description                               |
+| ---------------------------------------- | ----------------------------------------- |
+| `pnpm --filter raditail storybook`       | Start component development playground    |
+| `pnpm --filter raditail build`           | Produce `dist/` for the published package |
+| `pnpm --filter raditail build-storybook` | Generate the static Storybook site        |
+| `pnpm --filter raditail test`            | Run unit tests                            |
+| `pnpm lint`                              | Lint the entire monorepo                  |
+| `pnpm typecheck`                         | Type-check all packages                   |
+| `pnpm dev`                               | Run Storybook and docs app together       |
 
 ## Publishing to npm
 
@@ -193,40 +186,38 @@ pnpm typecheck
 
 ### Publishing a New Version
 
-```bash
-# 1. Build the package
-pnpm --filter raditail build
+1. Build the package: `pnpm --filter raditail build`
+2. Record the changes: `pnpm changeset`
+3. Bump versions: `pnpm changeset version`
+4. Publish to npm: `pnpm changeset publish --filter raditail --access public`
 
-# 2. Create a changeset (documents what changed)
-pnpm changeset
-
-# 3. Version the package (updates version in package.json)
-pnpm version
-
-# 4. Publish to npm (from the packages/raditail directory)
-cd packages/raditail
-npm publish
-```
-
-Alternatively, use the automated release workflow via GitHub Actions (see `.github/workflows/release.yml`).
+> Alternatively, push to `main` with an approved Changeset and let `.github/workflows/release.yml` publish for you (requires `NPM_TOKEN` and `NPM_OTP` secrets).
 
 ## Deploying Storybook to Vercel
 
-The Storybook is configured to deploy automatically to Vercel:
+Storybook is deployed via [`vercel.json`](./vercel.json):
 
-1. Go to [vercel.com](https://vercel.com) and import your repository
-2. Vercel will detect `vercel.json` and configure the build automatically
-3. Every push to `main` will trigger a new deployment
-4. Update the Storybook link in this README once deployed
+| Setting          | Value                                                                               |
+| ---------------- | ----------------------------------------------------------------------------------- |
+| Install command  | `pnpm install --no-frozen-lockfile`                                                 |
+| Build command    | `pnpm install --no-frozen-lockfile && cd packages/raditail && pnpm build-storybook` |
+| Output directory | `packages/raditail/storybook-static`                                                |
+
+On Vercel:
+
+1. Import the repo and select the root directory.
+2. Ensure the framework is set to “Other”.
+3. Optionally set `ENABLE_EXPERIMENTAL_COREPACK=1` if pnpm warnings appear.
+4. Share the deployment URL—this README links to `https://raditail-storybook.vercel.app`.
 
 ## Contributing
 
-Contributions are welcome! Please read our [contributing guidelines](./CONTRIBUTING.md) before submitting a pull request.
+Contributions are welcome! Please read [CONTRIBUTING.md](./CONTRIBUTING.md) before opening a PR.
 
 - Use pnpm v8 or newer
-- Commit formatting is handled via Prettier with Husky pre-commit hooks
+- Run tests/linting before pushing
 - Add stories and tests for new components
-- Follow the existing code style
+- Follow the established coding style and commit conventions
 
 ## License
 
