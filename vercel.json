@@ -1,6 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "installCommand": "corepack enable pnpm && pnpm install --no-frozen-lockfile",
+  "installCommand": "pnpm install --no-frozen-lockfile",
   "buildCommand": "cd packages/raditail && pnpm build-storybook",
   "outputDirectory": "packages/raditail/storybook-static"
 }
