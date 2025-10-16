@@ -58,7 +58,7 @@
     "test:watch": "vitest --watch",
     "build": "rimraf dist && tsup && node ./scripts/copy-theme-css.mjs",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
+    "build-storybook": "storybook build --config-dir .storybook",
     "clean": "rimraf dist"
   },
   "peerDependencies": {
