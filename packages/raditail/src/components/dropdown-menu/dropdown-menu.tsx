@@ -54,55 +54,54 @@ export interface DropdownMenuProps
   contentProps?: DropdownMenuContentOptions
 }
 
-export const DropdownMenu = React.forwardRef<
-  React.ElementRef<typeof DropdownMenuPrimitive.Root>,
-  DropdownMenuProps
->(
-  (
-    { size = 'md', menuItems, trigger, contentProps, children, ...props },
-    ref
-  ) => (
-    <DropdownMenuContext.Provider value={{ size }}>
-      <DropdownMenuPrimitive.Root ref={ref} {...props}>
-        {trigger}
-        {menuItems && menuItems.length > 0 ? (
-          <DropdownMenuContent {...contentProps}>
-            {menuItems.map((item, index) => {
-              const key = `menu-item-${index}`
-              if (item.type === 'separator') {
-                return (
-                  <DropdownMenuSeparator key={key} className={item.className} />
-                )
-              }
-              if (item.type === 'label') {
-                return (
-                  <DropdownMenuLabel
-                    key={key}
-                    inset={item.inset}
-                    className={item.className}
-                  >
-                    {item.label}
-                  </DropdownMenuLabel>
-                )
-              }
+export const DropdownMenu: React.FC<DropdownMenuProps> = ({
+  size = 'md',
+  menuItems,
+  trigger,
+  contentProps,
+  children,
+  ...props
+}) => (
+  <DropdownMenuContext.Provider value={{ size }}>
+    <DropdownMenuPrimitive.Root {...props}>
+      {trigger}
+      {menuItems && menuItems.length > 0 ? (
+        <DropdownMenuContent {...contentProps}>
+          {menuItems.map((item, index) => {
+            const key = `menu-item-${index}`
+            if (item.type === 'separator') {
               return (
-                <DropdownMenuItem
+                <DropdownMenuSeparator key={key} className={item.className} />
+              )
+            }
+            if (item.type === 'label') {
+              return (
+                <DropdownMenuLabel
                   key={key}
                   inset={item.inset}
-                  disabled={item.disabled}
-                  onSelect={item.onSelect}
                   className={item.className}
                 >
                   {item.label}
-                </DropdownMenuItem>
+                </DropdownMenuLabel>
               )
-            })}
-          </DropdownMenuContent>
-        ) : null}
-        {children}
-      </DropdownMenuPrimitive.Root>
-    </DropdownMenuContext.Provider>
-  )
+            }
+            return (
+              <DropdownMenuItem
+                key={key}
+                inset={item.inset}
+                disabled={item.disabled}
+                onSelect={item.onSelect}
+                className={item.className}
+              >
+                {item.label}
+              </DropdownMenuItem>
+            )
+          })}
+        </DropdownMenuContent>
+      ) : null}
+      {children}
+    </DropdownMenuPrimitive.Root>
+  </DropdownMenuContext.Provider>
 )
 
 DropdownMenu.displayName = DropdownMenuPrimitive.Root.displayName

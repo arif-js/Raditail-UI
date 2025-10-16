@@ -191,7 +191,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     const Comp = asChild ? Slot : 'button'
     const resolvedSize: NonNullable<ButtonProps['size']> = size ?? 'md'
     const labelNodes = React.Children.toArray(children).filter((child) => {
-      if (child === null || child === undefined || child === false) return false
+      if (child === null || child === undefined) return false
       if (typeof child === 'string') return child.trim().length > 0
       return true
     })

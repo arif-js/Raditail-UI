@@ -4,7 +4,7 @@ import type { ComponentSize } from '@/utils/size'
 import { fieldSizeClasses } from '@/utils/size'
 
 export interface InputProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
   size?: ComponentSize
 }
 

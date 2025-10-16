@@ -38,7 +38,7 @@ export const spacingTokens = {
   xl: '1.5rem',
 }
 
-export const raditailPreset: Config = {
+export const raditailPreset: Omit<Config, 'content'> = {
   darkMode: ['class', '[data-theme="dark"]'],
   theme: {
     extend: {

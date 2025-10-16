@@ -1,6 +1,7 @@
 {
   "name": "raditail",
-  "version": "0.0.0",
+  "version": "0.1.0",
+  "description": "A beautiful, accessible React component library built on Radix UI and Tailwind CSS",
   "private": false,
   "type": "module",
   "main": "./dist/index.cjs",
@@ -24,16 +25,31 @@
     "README.md",
     "LICENSE"
   ],
+  "keywords": [
+    "react",
+    "components",
+    "ui",
+    "tailwind",
+    "tailwindcss",
+    "radix-ui",
+    "design-system",
+    "component-library",
+    "accessibility",
+    "a11y"
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/raditail/raditail-ui.git"
+    "url": "git+https://github.com/arif-js/Raditail-UI.git",
+    "directory": "packages/raditail"
   },
-  "homepage": "https://raditail.dev",
+  "homepage": "https://github.com/arif-js/Raditail-UI#readme",
   "bugs": {
-    "url": "https://github.com/raditail/raditail-ui/issues"
+    "url": "https://github.com/arif-js/Raditail-UI/issues"
   },
-  "sideEffects": false,
+  "sideEffects": [
+    "*.css"
+  ],
   "scripts": {
     "dev": "storybook dev -p 6006",
     "lint": "eslint --ext .ts,.tsx src",
