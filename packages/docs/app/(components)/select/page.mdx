@@ -1,0 +1,38 @@
+export const metadata = {
+  title: 'Select',
+}
+
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from 'raditail'
+
+# Select
+
+Raditail Select composes `@radix-ui/react-select` with keyboard navigation and custom theming.
+
+<Select defaultValue="option-1" className="mt-4 w-64">
+  <SelectTrigger>
+    <SelectValue placeholder="Select an option" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectItem value="option-1">Option one</SelectItem>
+    <SelectItem value="option-2">Option two</SelectItem>
+    <SelectItem value="option-3">Option three</SelectItem>
+  </SelectContent>
+</Select>
+
+```tsx
+<Select defaultValue="option-1">
+  <SelectTrigger>
+    <SelectValue placeholder="Select an option" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectItem value="option-1">Option one</SelectItem>
+    <SelectItem value="option-2">Option two</SelectItem>
+  </SelectContent>
+</Select>
+```

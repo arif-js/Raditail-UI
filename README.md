@@ -1,37 +1,90 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Raditail UI Monorepo
 
-## Getting Started
+Raditail UI is a production-ready React component library built on Radix UI primitives and Tailwind CSS. This monorepo hosts the publishable library package and the Next.js documentation site.
 
-First, run the development server:
+## Packages
+
+- `packages/raditail` – component library (ESM, CJS, and type definitions via `tsup`).
+- `packages/docs` – Next.js App Router site used for documentation and live examples.
+
+## Installation
+
+Ensure you have [pnpm](https://pnpm.io) ≥ 8 installed, then bootstrap the workspace:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Quick start
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Launch both the component library Storybook and the Next.js docs site:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+pnpm install
+pnpm dev
+```
 
-## Learn More
+`pnpm dev` runs Storybook for the library and the docs site in parallel. Open Storybook at http://localhost:6006 and the docs site at http://localhost:3000.
 
-To learn more about Next.js, take a look at the following resources:
+## Useful scripts
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `pnpm --filter raditail dev` – start the component library Storybook.
+- `pnpm --filter docs dev` – run the documentation site locally.
+- `pnpm --filter raditail build` – create the publishable build (`dist/`).
+- `pnpm --filter raditail test` – execute Vitest + React Testing Library test suite.
+- `pnpm lint` / `pnpm typecheck` – shared linting and type checking.
+- `pnpm changeset` – create a new release entry.
+- `pnpm release` – publish versions defined by Changesets.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Inspect Storybook
 
-## Deploy on Vercel
+Run Storybook in isolation for faster iteration on components:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+pnpm --filter raditail storybook
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# Raditail-UI
+Storybook is available at http://localhost:6006 with Autodocs, controls, and a theme switcher preconfigured.
+
+## Tailwind + theming
+
+The Raditail preset wires CSS variables for tokens (color, spacing, radius) directly into Tailwind:
+
+```ts
+// tailwind.config.ts
+import { raditailPreset } from 'raditail/theme'
+
+export default {
+  content: ['./src/**/*.{ts,tsx,mdx}'],
+  presets: [raditailPreset],
+}
+```
+
+Import the global styles once in your app entry:
+
+```ts
+import 'raditail/theme/tailwind.css'
+import 'raditail/theme/styles.css'
+```
+
+Override tokens by applying a `data-theme` attribute or `.dark` class and redefining the CSS variables.
+
+## Releasing
+
+1. Run `pnpm changeset` to document changes.
+2. Merge changesets into `main`.
+3. GitHub Actions (`release.yml`) publishes packages to npm using provenance and `pnpm changeset publish`.
+
+## Deploying the docs
+
+The docs app is designed for Vercel. Point the Vercel project root to `packages/docs` and set the install command to `pnpm install` with build command `pnpm --filter docs build`.
+
+## Contributing
+
+- Use pnpm v8 or newer.
+- Commit formatting is handled via Prettier; Husky runs `lint-staged` before each commit.
+- Prefer adding stories and tests for new components.
+
+## License
+
+[MIT](./LICENSE)

@@ -1,0 +1,63 @@
+export const metadata = {
+  title: 'Theming',
+}
+
+# Theming
+
+Raditail UI exposes CSS variables for every token so you can match your product brand in minutes.
+
+## Default tokens
+
+Tokens live on `:root` (light) and `.dark` (dark) selectors.
+
+```css
+:root {
+  --rt-primary: 59 130 246;
+  --rt-primary-foreground: 255 255 255;
+}
+
+.dark {
+  --rt-primary: 96 165 250;
+  --rt-primary-foreground: 15 23 42;
+}
+```
+
+## Override tokens
+
+Wrap your app with a data attribute or class to swap tokens at runtime.
+
+```tsx
+export function MarketingLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <div
+      data-theme="brand"
+      style={{ '--rt-primary': '12 108 242' } as React.CSSProperties}
+    >
+      {children}
+    </div>
+  )
+}
+```
+
+### Tailwind configuration
+
+You can also extend Tailwind for custom design systems while keeping Raditail utilities.
+
+```ts
+import { raditailPreset } from 'raditail/theme'
+
+export default {
+  presets: [raditailPreset],
+  theme: {
+    extend: {
+      colors: {
+        brand: '#0c6cf2',
+      },
+    },
+  },
+}
+```
+
+## Dark mode
+
+Raditail supports `.dark` class and `data-theme="dark"`. Toggle it with `next-themes` or the method of your choice.

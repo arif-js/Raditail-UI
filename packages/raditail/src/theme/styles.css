@@ -1,0 +1,116 @@
+:root {
+  color-scheme: light;
+  --rt-background: 255 255 255;
+  --rt-foreground: 15 23 42;
+  --rt-muted: 241 245 249;
+  --rt-muted-foreground: 71 85 105;
+  --rt-border: 226 232 240;
+
+  /* Semantic colors - easy to customize */
+  --rt-primary: 59 130 246; /* Blue 500 */
+  --rt-primary-foreground: 255 255 255;
+  --rt-secondary: 100 116 139; /* Slate 500 */
+  --rt-secondary-foreground: 255 255 255;
+  --rt-destructive: 239 68 68; /* Red 500 */
+  --rt-destructive-foreground: 255 255 255;
+  --rt-success: 34 197 94; /* Green 500 */
+  --rt-success-foreground: 255 255 255;
+  --rt-warning: 234 179 8; /* Yellow 500 */
+  --rt-warning-foreground: 15 23 42;
+  --rt-accent: 99 102 241; /* Indigo 500 */
+  --rt-accent-foreground: 255 255 255;
+
+  --rt-radius-sm: 0.375rem;
+  --rt-radius-md: 0.5rem;
+  --rt-radius-lg: 0.75rem;
+  --rt-ring: 59 130 246;
+  --rt-ring-offset: 255 255 255;
+  --rt-spacing-xs: 0.25rem;
+  --rt-spacing-sm: 0.5rem;
+  --rt-spacing-md: 0.75rem;
+  --rt-spacing-lg: 1rem;
+  --rt-spacing-xl: 1.5rem;
+}
+
+:root {
+  --rt-bg: rgb(var(--rt-background));
+  --rt-fg: rgb(var(--rt-foreground));
+  --rt-muted-bg: rgb(var(--rt-muted));
+  --rt-muted-fg: rgb(var(--rt-muted-foreground));
+  --rt-border-color: rgb(var(--rt-border));
+  --rt-primary-color: rgb(var(--rt-primary));
+  --rt-primary-contrast: rgb(var(--rt-primary-foreground));
+  --rt-secondary-color: rgb(var(--rt-secondary));
+  --rt-secondary-contrast: rgb(var(--rt-secondary-foreground));
+  --rt-destructive-color: rgb(var(--rt-destructive));
+  --rt-destructive-contrast: rgb(var(--rt-destructive-foreground));
+  --rt-success-color: rgb(var(--rt-success));
+  --rt-success-contrast: rgb(var(--rt-success-foreground));
+  --rt-warning-color: rgb(var(--rt-warning));
+  --rt-warning-contrast: rgb(var(--rt-warning-foreground));
+}
+
+:root[data-theme='dark'],
+.dark {
+  color-scheme: dark;
+  --rt-background: 15 23 42;
+  --rt-foreground: 226 232 240;
+  --rt-muted: 30 41 59;
+  --rt-muted-foreground: 148 163 184;
+  --rt-border: 51 65 85;
+
+  /* Semantic colors - dark mode */
+  --rt-primary: 96 165 250; /* Blue 400 */
+  --rt-primary-foreground: 15 23 42;
+  --rt-secondary: 148 163 184; /* Slate 400 */
+  --rt-secondary-foreground: 15 23 42;
+  --rt-destructive: 248 113 113; /* Red 400 */
+  --rt-destructive-foreground: 15 23 42;
+  --rt-success: 74 222 128; /* Green 400 */
+  --rt-success-foreground: 15 23 42;
+  --rt-warning: 250 204 21; /* Yellow 400 */
+  --rt-warning-foreground: 15 23 42;
+  --rt-accent: 129 140 248; /* Indigo 400 */
+  --rt-accent-foreground: 15 23 42;
+
+  --rt-ring: 96 165 250;
+  --rt-ring-offset: 15 23 42;
+  --rt-spacing-xs: 0.25rem;
+  --rt-spacing-sm: 0.5rem;
+  --rt-spacing-md: 0.75rem;
+  --rt-spacing-lg: 1rem;
+  --rt-spacing-xl: 1.5rem;
+}
+
+:root[data-theme='dark'],
+.dark {
+  --rt-bg: rgb(var(--rt-background));
+  --rt-fg: rgb(var(--rt-foreground));
+  --rt-muted-bg: rgb(var(--rt-muted));
+  --rt-muted-fg: rgb(var(--rt-muted-foreground));
+  --rt-border-color: rgb(var(--rt-border));
+  --rt-primary-color: rgb(var(--rt-primary));
+  --rt-primary-contrast: rgb(var(--rt-primary-foreground));
+  --rt-secondary-color: rgb(var(--rt-secondary));
+  --rt-secondary-contrast: rgb(var(--rt-secondary-foreground));
+  --rt-destructive-color: rgb(var(--rt-destructive));
+  --rt-destructive-contrast: rgb(var(--rt-destructive-foreground));
+  --rt-success-color: rgb(var(--rt-success));
+  --rt-success-contrast: rgb(var(--rt-success-foreground));
+  --rt-warning-color: rgb(var(--rt-warning));
+  --rt-warning-contrast: rgb(var(--rt-warning-foreground));
+}
+
+body {
+  background-color: var(--rt-bg);
+  color: var(--rt-fg);
+  min-height: 100vh;
+  font-family:
+    'Inter',
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+}

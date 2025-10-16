@@ -1,0 +1,61 @@
+export const metadata = {
+  title: 'Getting Started',
+}
+
+# Getting started
+
+Raditail UI ships as a publishable package with ESM/CJS bundles, generated types, and Tailwind-powered styles. Use pnpm (recommended) or your preferred package manager.
+
+```bash
+pnpm add raditail @radix-ui/react-dialog @radix-ui/react-select @radix-ui/react-tooltip @radix-ui/react-tabs tailwindcss class-variance-authority tailwind-merge clsx
+```
+
+## Configure Tailwind
+
+Create `tailwind.config.ts` and include the Raditail preset:
+
+```ts
+import type { Config } from 'tailwindcss'
+import { raditailPreset } from 'raditail/theme'
+
+const config: Config = {
+  content: ['./src/**/*.{ts,tsx,mdx}'],
+  presets: [raditailPreset],
+}
+
+export default config
+```
+
+Then import the theme styles once in your app entry:
+
+```ts
+import 'raditail/theme/styles.css'
+```
+
+## Usage
+
+Components follow a consistent variant API powered by `class-variance-authority`.
+
+```tsx
+import { Button, Dialog, DialogContent, DialogTrigger } from 'raditail'
+
+export function Example() {
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button>Open dialog</Button>
+      </DialogTrigger>
+      <DialogContent>
+        <p>Your modal content lives here.</p>
+      </DialogContent>
+    </Dialog>
+  )
+}
+```
+
+## Scripts
+
+- `pnpm dev` – run Storybook and docs locally
+- `pnpm --filter raditail build` – build the component library
+- `pnpm --filter raditail test` – execute unit tests with Vitest
+- `pnpm release` – publish with Changesets

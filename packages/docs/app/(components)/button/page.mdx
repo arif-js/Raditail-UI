@@ -1,0 +1,34 @@
+export const metadata = {
+  title: 'Button',
+}
+
+import { Button } from 'raditail'
+
+# Button
+
+Buttons expose `variant`, `size`, and `isLoading` via `class-variance-authority`.
+
+<Button variant="solid">Primary</Button>
+<Button variant="outline" className="ml-2">
+  Outline
+</Button>
+<Button variant="ghost" className="ml-2">
+  Ghost
+</Button>
+<Button size="icon" className="ml-2" aria-label="Refresh">
+  ↻
+</Button>
+
+```tsx
+<Button variant="solid">Primary</Button>
+<Button variant="outline">Outline</Button>
+<Button size="icon">Icon button</Button>
+```
+
+Use `asChild` to combine with Next.js `Link` or any custom component.
+
+```tsx
+<Button asChild>
+  <Link href="/docs">Docs</Link>
+</Button>
+```
