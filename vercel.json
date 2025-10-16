@@ -1,6 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "pnpm install && pnpm build-storybook",
-  "outputDirectory": "storybook-static",
+  "buildCommand": "pnpm install && pnpm --filter raditail build-storybook",
+  "outputDirectory": "packages/raditail/storybook-static",
   "installCommand": "pnpm install"
 }
