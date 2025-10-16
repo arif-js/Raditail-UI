@@ -8,3 +8,4 @@ storybook-static
 coverage
 .husky/_
 .vscode
+.vercel
