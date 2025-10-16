@@ -77,7 +77,15 @@ import 'raditail/theme/styles.css'
 ### 3. Use Components
 
 ```tsx
-import { Button, Dialog, Select } from 'raditail'
+import {
+  Button,
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
+  DialogTrigger,
+  Select,
+} from 'raditail'
 
 function App() {
   return (
@@ -87,15 +95,15 @@ function App() {
       </Button>
 
       <Dialog>
-        <Dialog.Trigger asChild>
+        <DialogTrigger asChild>
           <Button>Open Dialog</Button>
-        </Dialog.Trigger>
-        <Dialog.Content>
-          <Dialog.Title>Welcome</Dialog.Title>
-          <Dialog.Description>
+        </DialogTrigger>
+        <DialogContent>
+          <DialogTitle>Welcome</DialogTitle>
+          <DialogDescription>
             This is a beautiful accessible dialog component.
-          </Dialog.Description>
-        </Dialog.Content>
+          </DialogDescription>
+        </DialogContent>
       </Dialog>
     </div>
   )

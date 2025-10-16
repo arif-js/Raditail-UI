@@ -6,6 +6,11 @@ export default defineConfig({
     'theme/index': 'src/theme/index.ts',
   },
   format: ['esm', 'cjs'],
+  outExtension({ format }) {
+    return {
+      js: format === 'esm' ? '.mjs' : '.cjs',
+    }
+  },
   dts: true,
   clean: true,
   sourcemap: true,
