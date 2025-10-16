@@ -174,42 +174,6 @@ pnpm dev
 | `pnpm typecheck`                         | Type-check all packages                   |
 | `pnpm dev`                               | Run Storybook and docs app together       |
 
-## Publishing to npm
-
-### First-time Setup
-
-1. Create an npm account at [npmjs.com](https://www.npmjs.com/)
-2. Login to npm:
-   ```bash
-   npm login
-   ```
-
-### Publishing a New Version
-
-1. Build the package: `pnpm --filter raditail build`
-2. Record the changes: `pnpm changeset`
-3. Bump versions: `pnpm changeset version`
-4. Publish to npm: `pnpm changeset publish --filter raditail --access public`
-
-> Alternatively, push to `main` with an approved Changeset and let `.github/workflows/release.yml` publish for you (requires `NPM_TOKEN` and `NPM_OTP` secrets).
-
-## Deploying Storybook to Vercel
-
-Storybook is deployed via [`vercel.json`](./vercel.json):
-
-| Setting          | Value                                                                               |
-| ---------------- | ----------------------------------------------------------------------------------- |
-| Install command  | `pnpm install --no-frozen-lockfile`                                                 |
-| Build command    | `pnpm install --no-frozen-lockfile && cd packages/raditail && pnpm build-storybook` |
-| Output directory | `packages/raditail/storybook-static`                                                |
-
-On Vercel:
-
-1. Import the repo and select the root directory.
-2. Ensure the framework is set to “Other”.
-3. Optionally set `ENABLE_EXPERIMENTAL_COREPACK=1` if pnpm warnings appear.
-4. Share the deployment URL—this README links to `https://raditail-storybook.vercel.app`.
-
 ## Contributing
 
 Contributions are welcome! Please read [CONTRIBUTING.md](./CONTRIBUTING.md) before opening a PR.
