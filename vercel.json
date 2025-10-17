@@ -1,5 +1,10 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "installCommand": "corepack enable && corepack prepare pnpm@9.12.1 --activate && pnpm -v && pnpm install",
   "buildCommand": "pnpm --filter raditail build-storybook",
-  "outputDirectory": "packages/raditail/storybook-static"
+  "outputDirectory": "packages/raditail/storybook-static",
+  "env": {
+    "HUSKY": "0",
+    "COREPACK_ENABLE_DOWNLOAD_PROMPT": "0"
+  }
 }

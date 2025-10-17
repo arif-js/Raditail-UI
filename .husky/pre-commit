@@ -1,1 +1,11 @@
-pnpm exec lint-staged
+if [ "${HUSKY:-1}" = "0" ]; then
+  exit 0
+fi
+
+if command -v pnpm >/dev/null 2>&1; then
+  pnpm exec lint-staged
+elif [ -x node_modules/.bin/lint-staged ]; then
+  node_modules/.bin/lint-staged
+else
+  echo "husky: lint-staged not found, skipping" >&2
+fi
