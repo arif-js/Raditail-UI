@@ -60,9 +60,9 @@
     "typecheck": "tsc --project tsconfig.json --noEmit",
     "test": "vitest",
     "test:watch": "vitest --watch",
-    "build": "rimraf dist && tsup && node ./scripts/copy-theme-css.mjs",
+    "build": "tsup --clean && node ./scripts/copy-theme-css.mjs",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build --config-dir .storybook",
+    "build-storybook": "storybook build -c .storybook -o storybook-static",
     "clean": "rimraf dist"
   },
   "peerDependencies": {
