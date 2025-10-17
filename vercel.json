@@ -2,8 +2,8 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "builds": [{ "src": "package.json", "use": "@vercel/static-build" }],
   "installCommand": "node -v && npx -y pnpm@9.12.1 -v && HUSKY=0 npx -y pnpm@9.12.1 install --ignore-scripts",
-  "buildCommand": "HUSKY=0 npx -y pnpm@9.12.1 run build-storybook",
-  "outputDirectory": "storybook-static",
+  "buildCommand": "HUSKY=0 npx -y pnpm@9.12.1 --filter raditail run build-storybook",
+  "outputDirectory": "packages/raditail/storybook-static",
   "env": {
     "HUSKY": "0",
     "COREPACK_ENABLE_DOWNLOAD_PROMPT": "0",
