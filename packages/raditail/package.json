@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "A beautiful, accessible React component library built on Radix UI and Tailwind CSS",
   "private": false,
+  "packageManager": "pnpm@9.12.1",
+  "engines": {
+    "node": ">=20 <23"
+  },
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
