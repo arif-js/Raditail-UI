@@ -2,12 +2,9 @@ const { resolve } = require('node:path')
 
 /** @type {import('@storybook/react-vite').StorybookConfig} */
 const config = {
-  stories: ['../src/**/*.stories.@(ts|tsx|mdx)'],
-  addons: ['@storybook/addon-essentials', '@storybook/addon-interactions'],
-  framework: {
-    name: '@storybook/react-vite',
-    options: {},
-  },
+  stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
+  addons: ['@storybook/addon-essentials'],
+  framework: { name: '@storybook/react-vite', options: {} },
   docs: {
     autodocs: 'tag',
   },
