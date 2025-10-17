@@ -8,6 +8,5 @@
     "HUSKY": "0",
     "COREPACK_ENABLE_DOWNLOAD_PROMPT": "0",
     "NPM_CONFIG_REGISTRY": "https://registry.npmjs.org/"
-  },
-  "nodeVersion": "20.x"
+  }
 }
