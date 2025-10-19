@@ -1,7 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "installCommand": "echo 'USING UI INSTALL OVERRIDE' && node -v && npx -y pnpm@9.12.1 -v && HUSKY=0 npx -y pnpm@9.12.1 install --ignore-scripts",
-  "buildCommand": "echo 'USING UI BUILD OVERRIDE' && HUSKY=0 npx -y pnpm@9.12.1 --filter raditail run build-storybook",
+  "installCommand": "echo 'USING UI INSTALL OVERRIDE' && node -v && npx -y pnpm@9.12.1 -v && HUSKY=0 npx -y pnpm@9.12.1 install",
+  "buildCommand": "cd packages/raditail && npx -y pnpm@9.12.1 exec storybook build -c .storybook -o storybook-static",
   "outputDirectory": "packages/raditail/storybook-static",
   "env": {
     "HUSKY": "0",
