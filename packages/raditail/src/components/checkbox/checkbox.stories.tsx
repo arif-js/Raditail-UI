@@ -28,10 +28,21 @@ export default meta
 type Story = StoryObj<typeof Checkbox>
 
 export const Default: Story = {
-  render: (args) => <CheckboxDemo {...args} />,
-}
-
-function CheckboxDemo(props: React.ComponentProps<typeof Checkbox>) {
-  const [checked, setChecked] = useState(false)
-  return <Checkbox {...props} checked={checked} onCheckedChange={setChecked} />
+  render: (args) => {
+    const [checked, setChecked] = useState(false)
+    return <Checkbox {...args} checked={checked} onCheckedChange={setChecked} />
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `<Checkbox 
+  label="Accept terms" 
+  placement="right" 
+  size="md" 
+  checked={checked} 
+  onCheckedChange={setChecked} 
+/>`,
+      },
+    },
+  },
 }
