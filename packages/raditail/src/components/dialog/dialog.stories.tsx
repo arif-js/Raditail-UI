@@ -134,8 +134,29 @@ export const NotDismissable: Story = {
 }
 
 export const Controlled: Story = {
+  args: {
+    triggerLabel: 'Open controlled dialog',
+  },
+  argTypes: {
+    open: {
+      control: 'boolean',
+      description: 'Control the dialog open state',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
+  },
   render: (args) => {
-    const [open, setOpen] = React.useState(true)
+    const [open, setOpen] = React.useState(false)
+
+    // Sync with Storybook controls if provided
+    React.useEffect(() => {
+      if (args.open !== undefined) {
+        setOpen(args.open)
+      }
+    }, [args.open])
+
     return (
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
@@ -150,7 +171,7 @@ export const Controlled: Story = {
           <DialogHeader>
             <DialogTitle>Controlled dialog</DialogTitle>
             <DialogDescription>
-              The `open` prop is managed externally.
+              The `open` prop is managed externally with useState.
             </DialogDescription>
           </DialogHeader>
           {args.includeFooter ? (
@@ -166,5 +187,42 @@ export const Controlled: Story = {
         </DialogContent>
       </Dialog>
     )
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `function ControlledDialog() {
+  const [open, setOpen] = React.useState(false)
+  
+  return (
+    <Dialog open={open} onOpenChange={setOpen}>
+      <DialogTrigger asChild>
+        <Button>Open controlled dialog</Button>
+      </DialogTrigger>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Controlled dialog</DialogTitle>
+          <DialogDescription>
+            The \`open\` prop is managed externally with useState.
+          </DialogDescription>
+        </DialogHeader>
+        <DialogFooter>
+          <DialogClose asChild>
+            <Button variant="ghost">Cancel</Button>
+          </DialogClose>
+          <Button onClick={() => setOpen(false)} variant="solid">
+            Close
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  )
+}`,
+      },
+      description: {
+        story:
+          'Control the dialog state externally using the `open` prop and `onOpenChange` callback. Toggle the `open` control below to programmatically open/close the dialog.',
+      },
+    },
   },
 }
