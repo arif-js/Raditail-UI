@@ -132,7 +132,7 @@ export const WithColorSchemes: Story = {
   },
 }
 
-export const WithSizes: Story = {
+export const WithButtonSizes: Story = {
   render: () => (
     <div className="flex flex-wrap gap-4">
       <AlertDialog>
@@ -152,6 +152,17 @@ export const WithSizes: Story = {
               Confirm
             </AlertDialogAction>
           </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
+      <AlertDialog>
+        <AlertDialogTrigger asChild>
+          <Button size="md">Medium Buttons</Button>
+        </AlertDialogTrigger>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Medium button size</AlertDialogTitle>
+          </AlertDialogHeader>
         </AlertDialogContent>
       </AlertDialog>
 

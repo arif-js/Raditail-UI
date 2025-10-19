@@ -29,6 +29,19 @@ const preview: Preview = {
     layout: 'centered',
     docs: {
       toc: true,
+      source: {
+        excludeDecorators: true,
+      },
+    },
+    options: {
+      storySort: {
+        order: ['Introduction', 'Components', '*'],
+      },
+    },
+    // Author information
+    author: {
+      name: 'Arif',
+      url: 'https://github.com/arif-js',
     },
   },
   globalTypes: {
