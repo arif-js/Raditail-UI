@@ -1,10 +1,11 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "installCommand": "echo 'USING UI INSTALL OVERRIDE' && node -v && npx -y pnpm@9.12.1 -v && npx -y pnpm@9.12.1 install --ignore-scripts",
+  "installCommand": "echo 'USING UI INSTALL OVERRIDE' && node -v && npx -y pnpm@9.12.1 -v && CI=true npx -y pnpm@9.12.1 install",
   "buildCommand": "cd packages/raditail && npx -y pnpm@9.12.1 exec storybook build -c .storybook -o storybook-static",
   "outputDirectory": "packages/raditail/storybook-static",
   "env": {
     "HUSKY": "0",
+    "CI": "true",
     "COREPACK_ENABLE_DOWNLOAD_PROMPT": "0",
     "NPM_CONFIG_REGISTRY": "https://registry.npmjs.org/"
   }
