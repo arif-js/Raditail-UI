@@ -19,6 +19,7 @@ type DialogStoryArgs = {
   dismissable: boolean
   includeFooter: boolean
   triggerLabel: string
+  open?: boolean
 }
 
 const meta: Meta<DialogStoryArgs> = {
@@ -80,7 +81,7 @@ const meta: Meta<DialogStoryArgs> = {
           <label className="flex flex-col gap-2 text-left text-sm">
             Name
             <input
-              className="rounded-[var(--rt-radius-sm)] border border-[var(--rt-border-color)] bg-[var(--rt-bg)] px-3 py-2 text-[var(--rt-foreground)] focus:border-[var(--rt-primary-color)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--rt-primary-color)]/40"
+              className="rounded-[var(--rt-radius-sm)] border border-[var(--rt-border-color)] bg-[var(--rt-bg)] px-3 py-2 text-[var(--rt-foreground)] focus:border-[var(--rt-primary-color)] focus:outline-none focus-visible:ring-2 focus-visible:ring-rt-primary/40"
               defaultValue="Jane Doe"
             />
           </label>
@@ -133,6 +134,48 @@ export const NotDismissable: Story = {
   },
 }
 
+const ControlledDialogDemo = (args: DialogStoryArgs) => {
+  const [open, setOpen] = React.useState(false)
+
+  // Sync with Storybook controls if provided
+  React.useEffect(() => {
+    if (args.open !== undefined) {
+      setOpen(args.open)
+    }
+  }, [args.open])
+
+  return (
+    <Dialog open={open} onOpenChange={setOpen}>
+      <DialogTrigger asChild>
+        <Button>{args.triggerLabel}</Button>
+      </DialogTrigger>
+      <DialogContent
+        size={args.size}
+        fullScreen={args.fullScreen}
+        showCloseButton={args.showCloseButton}
+        dismissable={args.dismissable}
+      >
+        <DialogHeader>
+          <DialogTitle>Controlled dialog</DialogTitle>
+          <DialogDescription>
+            The `open` prop is managed externally with useState.
+          </DialogDescription>
+        </DialogHeader>
+        {args.includeFooter ? (
+          <DialogFooter>
+            <DialogClose asChild>
+              <Button variant="ghost">Cancel</Button>
+            </DialogClose>
+            <Button onClick={() => setOpen(false)} variant="solid">
+              Close
+            </Button>
+          </DialogFooter>
+        ) : null}
+      </DialogContent>
+    </Dialog>
+  )
+}
+
 export const Controlled: Story = {
   args: {
     triggerLabel: 'Open controlled dialog',
@@ -147,47 +190,7 @@ export const Controlled: Story = {
       },
     },
   },
-  render: (args) => {
-    const [open, setOpen] = React.useState(false)
-
-    // Sync with Storybook controls if provided
-    React.useEffect(() => {
-      if (args.open !== undefined) {
-        setOpen(args.open)
-      }
-    }, [args.open])
-
-    return (
-      <Dialog open={open} onOpenChange={setOpen}>
-        <DialogTrigger asChild>
-          <Button>{args.triggerLabel}</Button>
-        </DialogTrigger>
-        <DialogContent
-          size={args.size}
-          fullScreen={args.fullScreen}
-          showCloseButton={args.showCloseButton}
-          dismissable={args.dismissable}
-        >
-          <DialogHeader>
-            <DialogTitle>Controlled dialog</DialogTitle>
-            <DialogDescription>
-              The `open` prop is managed externally with useState.
-            </DialogDescription>
-          </DialogHeader>
-          {args.includeFooter ? (
-            <DialogFooter>
-              <DialogClose asChild>
-                <Button variant="ghost">Cancel</Button>
-              </DialogClose>
-              <Button onClick={() => setOpen(false)} variant="solid">
-                Close
-              </Button>
-            </DialogFooter>
-          ) : null}
-        </DialogContent>
-      </Dialog>
-    )
-  },
+  render: (args) => <ControlledDialogDemo {...args} />,
   parameters: {
     docs: {
       source: {

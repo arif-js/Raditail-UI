@@ -9,6 +9,15 @@ module.exports = {
     react: {
       version: 'detect',
     },
+    'import/resolver': {
+      typescript: {
+        alwaysTryTypes: true,
+        project: ['./tsconfig.json'],
+      },
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
+    },
   },
   plugins: ['@typescript-eslint', 'react', 'react-hooks', 'jsx-a11y', 'import'],
   extends: [

@@ -1,10 +1,16 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import type { Route } from 'next'
 import './globals.css'
 import 'raditail/theme/tailwind.css'
 import 'raditail/theme/styles.css'
 import { ThemeProvider } from './theme-provider'
 import { ThemeToggle } from './components/ThemeToggle'
+
+// `experimental.typedRoutes` does not enumerate MDX pages, so these valid routes
+// have to be asserted. Route groups must never appear in the URL itself.
+const GETTING_STARTED = '/getting-started' as Route
+const THEMING = '/theming' as Route
 
 export const metadata: Metadata = {
   title: 'Raditail UI – Accessible React component library',
@@ -40,15 +46,12 @@ export default function RootLayout({
                   Home
                 </Link>
                 <Link
-                  href="/(docs)/getting-started"
+                  href={GETTING_STARTED}
                   className="hover:text-[--rt-foreground]"
                 >
                   Getting Started
                 </Link>
-                <Link
-                  href="/(docs)/theming"
-                  className="hover:text-[--rt-foreground]"
-                >
+                <Link href={THEMING} className="hover:text-[--rt-foreground]">
                   Theming
                 </Link>
                 <ThemeToggle />

@@ -15,13 +15,17 @@
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.mjs"
     },
     "./theme": {
       "types": "./dist/theme/index.d.ts",
       "import": "./dist/theme/index.mjs",
-      "require": "./dist/theme/index.cjs"
+      "require": "./dist/theme/index.cjs",
+      "default": "./dist/theme/index.mjs"
     },
+    "./theme/tailwind.css": "./dist/theme/tailwind.css",
+    "./theme/styles.css": "./dist/theme/styles.css",
     "./package.json": "./package.json"
   },
   "files": [
@@ -57,10 +61,10 @@
   "scripts": {
     "dev": "storybook dev -p 6006",
     "lint": "eslint --ext .ts,.tsx src",
-    "typecheck": "tsc --project tsconfig.json --noEmit",
-    "test": "vitest",
+    "typecheck": "tsc --project tsconfig.spec.json --noEmit",
+    "test": "vitest run",
     "test:watch": "vitest --watch",
-    "build": "tsup --clean && node ./scripts/copy-theme-css.mjs",
+    "build": "tsup --clean && node ./scripts/add-use-client.mjs && node ./scripts/copy-theme-css.mjs",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build -c .storybook -o storybook-static",
     "clean": "rimraf dist"
@@ -94,11 +98,7 @@
     "react-dom": "^18.2.0 || ^19.0.0",
     "tailwindcss": "^3.4.0 || ^4.0.0"
   },
-  "peerDependenciesMeta": {
-    "lucide-react": {
-      "optional": true
-    }
-  },
+  "peerDependenciesMeta": {},
   "dependencies": {
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -142,6 +142,7 @@
     "@types/react-dom": "^18.3.2",
     "@vitejs/plugin-react": "^4.3.3",
     "autoprefixer": "^10.4.20",
+    "happy-dom": "^15.11.7",
     "lucide-react": "^0.525.0",
     "postcss": "^8.4.47",
     "rimraf": "^6.0.1",

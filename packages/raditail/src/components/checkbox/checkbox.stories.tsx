@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { useState } from 'react'
+import type { CheckedState } from '@radix-ui/react-checkbox'
+import { useState, type ComponentProps } from 'react'
 import { Checkbox } from './checkbox'
 
 const meta: Meta<typeof Checkbox> = {
@@ -27,11 +28,13 @@ export default meta
 
 type Story = StoryObj<typeof Checkbox>
 
+const ControlledCheckbox = (args: ComponentProps<typeof Checkbox>) => {
+  const [checked, setChecked] = useState<CheckedState>(false)
+  return <Checkbox {...args} checked={checked} onCheckedChange={setChecked} />
+}
+
 export const Default: Story = {
-  render: (args) => {
-    const [checked, setChecked] = useState(false)
-    return <Checkbox {...args} checked={checked} onCheckedChange={setChecked} />
-  },
+  render: (args) => <ControlledCheckbox {...args} />,
   parameters: {
     docs: {
       source: {

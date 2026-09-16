@@ -76,7 +76,7 @@ export const Avatar = React.forwardRef<
             ) : null}
             <AvatarPrimitive.Fallback
               className={cn(
-                'flex h-full w-full items-center justify-center bg-[var(--rt-muted-bg] text-sm font-medium text-[var(--rt-muted-foreground]',
+                'flex h-full w-full items-center justify-center bg-[var(--rt-muted-bg)] text-sm font-medium text-[var(--rt-muted-foreground)]',
                 fallbackClassName
               )}
               {...restFallbackProps}

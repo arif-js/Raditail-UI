@@ -6,7 +6,12 @@ import {
   AccordionTrigger,
 } from './accordion'
 
-const meta: Meta<typeof Accordion> = {
+type AccordionStoryArgs = {
+  type: 'single' | 'multiple'
+  collapsible?: boolean
+}
+
+const meta: Meta<AccordionStoryArgs> = {
   tags: ['autodocs'],
   title: 'Components/Accordion',
   component: Accordion,
@@ -31,7 +36,7 @@ const meta: Meta<typeof Accordion> = {
 
 export default meta
 
-type Story = StoryObj<typeof meta>
+type Story = StoryObj<AccordionStoryArgs>
 
 export const Default: Story = {
   parameters: {

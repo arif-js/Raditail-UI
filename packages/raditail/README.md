@@ -5,12 +5,20 @@ Raditail provides Radix UI powered components styled through Tailwind CSS tokens
 ## Installation
 
 ```bash
-pnpm add raditail @radix-ui/react-dialog @radix-ui/react-select @radix-ui/react-tooltip @radix-ui/react-tabs tailwindcss class-variance-authority tailwind-merge clsx
+pnpm add raditail
 ```
+
+Raditail's Radix primitives, `lucide-react`, and `tailwindcss` are peer dependencies, so
+your package manager installs them for you. `react` and `react-dom` (18 or 19) must already
+be present.
+
+The package entry point re-exports every component, so every peer above must be installed —
+you cannot omit individual Radix primitives while importing from `raditail`.
 
 ## Tailwind preset
 
-Add the preset to your Tailwind config and import the CSS variables once in your app.
+Add the preset to your Tailwind config, make sure Tailwind scans the library's build output,
+and import the CSS variables once in your app.
 
 ```ts
 // tailwind.config.ts
@@ -18,7 +26,11 @@ import type { Config } from 'tailwindcss'
 import { raditailPreset } from 'raditail/theme'
 
 const config: Config = {
-  content: ['./src/**/*.{ts,tsx,mdx}'],
+  content: [
+    './src/**/*.{ts,tsx,mdx}',
+    // Required: component styles live in the published build, not your source.
+    './node_modules/raditail/dist/**/*.{js,mjs}',
+  ],
   presets: [raditailPreset],
 }
 

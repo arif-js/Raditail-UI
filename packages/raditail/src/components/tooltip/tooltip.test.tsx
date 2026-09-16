@@ -26,6 +26,6 @@ describe('Tooltip', () => {
 
     await user.hover(screen.getByRole('button', { name: 'Info' }))
 
-    expect(await screen.findByText('Tooltip text')).toBeInTheDocument()
+    expect(await screen.findByRole('tooltip')).toHaveTextContent('Tooltip text')
   })
 })

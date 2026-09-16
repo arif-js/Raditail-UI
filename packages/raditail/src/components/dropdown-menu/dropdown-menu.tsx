@@ -295,7 +295,7 @@ export const DropdownMenuLabel = React.forwardRef<
     <DropdownMenuPrimitive.Label
       ref={ref}
       className={cn(
-        'font-semibold text-[var(--rt-muted-foreground]',
+        'font-semibold text-[var(--rt-muted-foreground)]',
         menuLabelSizeClasses[resolvedSize],
         inset && 'pl-8',
         className

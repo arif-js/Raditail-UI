@@ -1,5 +1,6 @@
 import type { MDXComponents } from 'mdx/types'
 import Link from 'next/link'
+import type { Route } from 'next'
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -8,7 +9,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         return <a href={href} rel="noreferrer" target="_blank" {...props} />
       }
 
-      return <Link href={href} {...props} />
+      // Markdown links are plain strings; typedRoutes cannot validate them.
+      return <Link href={href as Route} {...props} />
     },
     pre: (props) => (
       <pre

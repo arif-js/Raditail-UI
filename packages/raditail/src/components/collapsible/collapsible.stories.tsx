@@ -25,27 +25,25 @@ export default meta
 
 type Story = StoryObj<typeof meta>
 
+const CollapsibleDemo = () => {
+  const [open, setOpen] = useState(false)
+  return (
+    <Collapsible open={open} onOpenChange={setOpen} className="w-72 space-y-4">
+      <CollapsibleTrigger asChild>
+        <Button variant="outline">
+          {open ? 'Hide details' : 'Show details'}
+        </Button>
+      </CollapsibleTrigger>
+      <CollapsibleContent>
+        <p className="mt-2 text-sm text-[var(--rt-muted-foreground)]">
+          Collapsible lets you reveal additional context without leaving the
+          page.
+        </p>
+      </CollapsibleContent>
+    </Collapsible>
+  )
+}
+
 export const Default: Story = {
-  render: () => {
-    const [open, setOpen] = useState(false)
-    return (
-      <Collapsible
-        open={open}
-        onOpenChange={setOpen}
-        className="w-72 space-y-4"
-      >
-        <CollapsibleTrigger asChild>
-          <Button variant="outline">
-            {open ? 'Hide details' : 'Show details'}
-          </Button>
-        </CollapsibleTrigger>
-        <CollapsibleContent>
-          <p className="mt-2 text-sm text-[var(--rt-muted-foreground)]">
-            Collapsible lets you reveal additional context without leaving the
-            page.
-          </p>
-        </CollapsibleContent>
-      </Collapsible>
-    )
-  },
+  render: () => <CollapsibleDemo />,
 }

@@ -33,6 +33,7 @@ describe('Dialog', () => {
         </DialogTrigger>
         <DialogContent>
           <DialogTitle>Modal Content</DialogTitle>
+          <DialogDescription>Modal description</DialogDescription>
         </DialogContent>
       </Dialog>
     )

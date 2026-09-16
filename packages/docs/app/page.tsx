@@ -1,25 +1,28 @@
 import Link from 'next/link'
+import type { Route } from 'next'
 import { ArrowRightIcon, CodeIcon, PaletteIcon } from 'lucide-react'
 import { Button } from 'raditail'
 import { UsageExamples } from './components/UsageExamples'
 
+// Route groups like (docs) are a filesystem detail and must not appear in URLs.
+// `experimental.typedRoutes` cannot see MDX pages, so these are asserted.
 const quickLinks = [
   {
     title: 'Install the library',
     description: 'Add Raditail UI and peer dependencies in one command.',
-    href: '/(docs)/getting-started',
+    href: '/getting-started' as Route,
     icon: ArrowRightIcon,
   },
   {
     title: 'Explore the components',
     description: 'Browse composable building blocks powered by Radix UI.',
-    href: '/(components)/button',
+    href: '/button' as Route,
     icon: CodeIcon,
   },
   {
     title: 'Customize the theme',
     description: 'Override tokens with CSS variables or Tailwind config.',
-    href: '/(docs)/theming',
+    href: '/theming' as Route,
     icon: PaletteIcon,
   },
 ]
@@ -40,7 +43,7 @@ export default function HomePage() {
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
           <Button size="lg" asChild>
-            <Link href="/(docs)/getting-started">Get started</Link>
+            <Link href={'/getting-started' as Route}>Get started</Link>
           </Button>
           <Button size="lg" variant="outline" asChild>
             <a

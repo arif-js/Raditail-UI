@@ -15,7 +15,7 @@ export const buttonVariants = cva(
         ghost:
           'bg-transparent text-[var(--rt-foreground)] hover:bg-[var(--rt-muted-bg)]',
         subtle:
-          'bg-[var(--rt-muted-bg)] text-[var(--rt-foreground)] hover:bg-[var(--rt-muted-bg)]/80',
+          'bg-[var(--rt-muted-bg)] text-[var(--rt-foreground)] hover:bg-rt-muted/80',
       },
       colorScheme: {
         default: '',
@@ -75,62 +75,58 @@ export const buttonVariants = cva(
         variant: 'outline',
         colorScheme: 'primary',
         className:
-          'border-[var(--rt-primary-color)] text-[var(--rt-primary-color)] hover:bg-[var(--rt-primary-color)]/10',
+          'border-[var(--rt-primary-color)] text-[var(--rt-primary-color)] hover:bg-rt-primary/10',
       },
       {
         variant: 'outline',
         colorScheme: 'secondary',
         className:
-          'border-[var(--rt-secondary-color)] text-[var(--rt-secondary-color)] hover:bg-[var(--rt-secondary-color)]/10',
+          'border-[var(--rt-secondary-color)] text-[var(--rt-secondary-color)] hover:bg-rt-secondary/10',
       },
       {
         variant: 'outline',
         colorScheme: 'destructive',
         className:
-          'border-[var(--rt-destructive-color)] text-[var(--rt-destructive-color)] hover:bg-[var(--rt-destructive-color)]/10',
+          'border-[var(--rt-destructive-color)] text-[var(--rt-destructive-color)] hover:bg-rt-destructive/10',
       },
       {
         variant: 'outline',
         colorScheme: 'success',
         className:
-          'border-[var(--rt-success-color)] text-[var(--rt-success-color)] hover:bg-[var(--rt-success-color)]/10',
+          'border-[var(--rt-success-color)] text-[var(--rt-success-color)] hover:bg-rt-success/10',
       },
       {
         variant: 'outline',
         colorScheme: 'warning',
         className:
-          'border-[var(--rt-warning-color)] text-[var(--rt-warning-color)] hover:bg-[var(--rt-warning-color)]/10',
+          'border-[var(--rt-warning-color)] text-[var(--rt-warning-color)] hover:bg-rt-warning/10',
       },
       // Ghost variants
       {
         variant: 'ghost',
         colorScheme: 'primary',
-        className:
-          'text-[var(--rt-primary-color)] hover:bg-[var(--rt-primary-color)]/10',
+        className: 'text-[var(--rt-primary-color)] hover:bg-rt-primary/10',
       },
       {
         variant: 'ghost',
         colorScheme: 'secondary',
-        className:
-          'text-[var(--rt-secondary-color)] hover:bg-[var(--rt-secondary-color)]/10',
+        className: 'text-[var(--rt-secondary-color)] hover:bg-rt-secondary/10',
       },
       {
         variant: 'ghost',
         colorScheme: 'destructive',
         className:
-          'text-[var(--rt-destructive-color)] hover:bg-[var(--rt-destructive-color)]/10',
+          'text-[var(--rt-destructive-color)] hover:bg-rt-destructive/10',
       },
       {
         variant: 'ghost',
         colorScheme: 'success',
-        className:
-          'text-[var(--rt-success-color)] hover:bg-[var(--rt-success-color)]/10',
+        className: 'text-[var(--rt-success-color)] hover:bg-rt-success/10',
       },
       {
         variant: 'ghost',
         colorScheme: 'warning',
-        className:
-          'text-[var(--rt-warning-color)] hover:bg-[var(--rt-warning-color)]/10',
+        className: 'text-[var(--rt-warning-color)] hover:bg-rt-warning/10',
       },
     ],
     defaultVariants: {
@@ -211,7 +207,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
     return (
       <Comp
-        ref={ref as any}
+        ref={ref as React.Ref<HTMLButtonElement>}
         className={cn(
           buttonVariants({
             variant,
@@ -232,7 +228,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       >
         {isLoading ? (
           <span className="inline-flex items-center gap-2">
-            <span className="h-3 w-3 animate-spin rounded-full border-2 border-[var(--rt-primary-contrast)]/50 border-t-transparent" />
+            <span className="h-3 w-3 animate-spin rounded-full border-2 border-rt-primary-foreground/50 border-t-transparent" />
             <span className="text-[var(--rt-muted-foreground)]">Loading…</span>
           </span>
         ) : iconOnly ? (

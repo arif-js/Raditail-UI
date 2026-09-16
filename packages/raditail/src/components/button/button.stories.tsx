@@ -74,7 +74,7 @@ export const Loading: Story = {
 export const WithSlot: Story = {
   render: (args) => (
     <Button {...args} asChild>
-      <a href="#">As child link</a>
+      <a href="/docs">As child link</a>
     </Button>
   ),
 }

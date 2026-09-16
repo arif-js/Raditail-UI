@@ -52,10 +52,13 @@ export const raditailPreset: Omit<Config, 'content'> = {
         ...spacingTokens,
       },
       ringColor: {
-        rt: 'rgb(var(--rt-ring) / <alpha-value>)',
+        // Must be DEFAULT, not a named key: `extend` merges shallowly, so a key
+        // named `rt` would overwrite the nested `rt.*` color scale and break
+        // every `ring-rt-*` utility.
+        DEFAULT: 'rgb(var(--rt-ring) / <alpha-value>)',
       },
       ringOffsetColor: {
-        rt: 'rgb(var(--rt-ring-offset) / <alpha-value>)',
+        DEFAULT: 'rgb(var(--rt-ring-offset) / <alpha-value>)',
       },
       keyframes: {
         'accordion-down': {

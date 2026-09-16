@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
-import { Button, buttonVariants } from './button'
+import { Button } from './button'
 
 describe('Button', () => {
   it('renders with default props', () => {
@@ -11,7 +11,9 @@ describe('Button', () => {
   it('applies variant classes', () => {
     render(<Button variant="outline">Outline</Button>)
     const button = screen.getByRole('button', { name: 'Outline' })
-    expect(button.className).toContain(buttonVariants({ variant: 'outline' }))
+    expect(button.className).toContain('border-[var(--rt-border-color)]')
+    expect(button.className).toContain('text-[var(--rt-foreground)]')
+    expect(button.className).toContain('hover:bg-[var(--rt-muted-bg)]')
   })
 
   it('disables when loading', () => {

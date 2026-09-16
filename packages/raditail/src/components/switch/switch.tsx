@@ -20,7 +20,7 @@ export const Switch = React.forwardRef<
   <SwitchPrimitive.Root
     ref={ref}
     className={cn(
-      'peer inline-flex shrink-0 cursor-pointer items-center justify-start rounded-full border-2 border-transparent bg-[var(--rt-muted-bg)] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--rt-primary-color)]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--rt-ring-offset)] data-[state=checked]:bg-[var(--rt-primary-color)] data-[state=checked]:justify-end',
+      'peer inline-flex shrink-0 cursor-pointer items-center justify-start rounded-full border-2 border-transparent bg-[var(--rt-muted-bg)] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rt-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--rt-ring-offset)] data-[state=checked]:bg-[var(--rt-primary-color)] data-[state=checked]:justify-end',
       switchTrackSizeClasses[size],
       switchPaddingClasses[size],
       className

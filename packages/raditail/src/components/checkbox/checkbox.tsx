@@ -43,7 +43,7 @@ export const Checkbox = React.forwardRef<
       <CheckboxPrimitive.Root
         ref={ref}
         className={cn(
-          'peer shrink-0 rounded-sm border border-[var(--rt-border-color] bg-[var(--rt-bg] shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--rt-primary-color] disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-[var(--rt-primary-color] data-[state=checked]:text-[var(--rt-primary-contrast]',
+          'peer shrink-0 rounded-sm border border-[var(--rt-border-color)] bg-[var(--rt-bg)] shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--rt-primary-color)] disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-[var(--rt-primary-color)] data-[state=checked]:text-[var(--rt-primary-contrast)]',
           checkboxControlSizeClasses[size],
           className
         )}
@@ -72,7 +72,7 @@ export const Checkbox = React.forwardRef<
           <span
             {...restLabelProps}
             className={cn(
-              'text-[var(--rt-foreground]',
+              'text-[var(--rt-foreground)]',
               controlLabelTextClasses[size],
               labelClassName,
               labelPropsClassName
@@ -86,7 +86,7 @@ export const Checkbox = React.forwardRef<
           <span
             {...restLabelProps}
             className={cn(
-              'text-[var(--rt-foreground]',
+              'text-[var(--rt-foreground)]',
               controlLabelTextClasses[size],
               labelClassName,
               labelPropsClassName

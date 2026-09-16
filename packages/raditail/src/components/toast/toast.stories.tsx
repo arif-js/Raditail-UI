@@ -63,187 +63,185 @@ export default meta
 
 type Story = StoryObj<ToastStoryArgs>
 
-export const Default: Story = {
-  render: (args) => {
-    const [open, setOpen] = useState(false)
+const ToastDemo = (args: ToastStoryArgs) => {
+  const [open, setOpen] = useState(false)
 
-    return (
-      <ToastProvider swipeDirection="right">
-        <Button onClick={() => setOpen(true)}>Show toast</Button>
-        <Toast
-          open={open}
-          onOpenChange={setOpen}
-          duration={4000}
-          colorScheme={args.colorScheme}
-        >
-          <div className="flex w-full items-start gap-3">
-            <div>
-              <ToastTitle>Changes deployed</ToastTitle>
-              <ToastDescription>
-                Production deployment finished in 46 seconds.
-              </ToastDescription>
-            </div>
-            <ToastAction altText="View logs">View logs</ToastAction>
-            <ToastClose aria-label="Dismiss" />
+  return (
+    <ToastProvider swipeDirection="right">
+      <Button onClick={() => setOpen(true)}>Show toast</Button>
+      <Toast
+        open={open}
+        onOpenChange={setOpen}
+        duration={4000}
+        colorScheme={args.colorScheme}
+      >
+        <div className="flex w-full items-start gap-3">
+          <div>
+            <ToastTitle>Changes deployed</ToastTitle>
+            <ToastDescription>
+              Production deployment finished in 46 seconds.
+            </ToastDescription>
           </div>
-        </Toast>
-        <ToastViewport position={args.position} />
-      </ToastProvider>
-    )
-  },
+          <ToastAction altText="View logs">View logs</ToastAction>
+          <ToastClose aria-label="Dismiss" />
+        </div>
+      </Toast>
+      <ToastViewport position={args.position} />
+    </ToastProvider>
+  )
+}
+
+export const Default: Story = {
+  render: (args) => <ToastDemo {...args} />,
+}
+
+const ToastColorSchemes = () => {
+  const [toasts, setToasts] = useState({
+    default: false,
+    primary: false,
+    secondary: false,
+    destructive: false,
+    success: false,
+    warning: false,
+  })
+
+  const showToast = (type: keyof typeof toasts) => {
+    setToasts((prev) => ({ ...prev, [type]: true }))
+  }
+
+  return (
+    <ToastProvider swipeDirection="right">
+      <div className="flex flex-wrap gap-2">
+        <Button variant="outline" onClick={() => showToast('default')}>
+          Default Toast
+        </Button>
+        <Button
+          variant="outline"
+          colorScheme="primary"
+          onClick={() => showToast('primary')}
+        >
+          Primary Toast
+        </Button>
+        <Button
+          variant="outline"
+          colorScheme="secondary"
+          onClick={() => showToast('secondary')}
+        >
+          Secondary Toast
+        </Button>
+        <Button
+          variant="outline"
+          colorScheme="destructive"
+          onClick={() => showToast('destructive')}
+        >
+          Destructive Toast
+        </Button>
+        <Button
+          variant="outline"
+          colorScheme="success"
+          onClick={() => showToast('success')}
+        >
+          Success Toast
+        </Button>
+        <Button
+          variant="outline"
+          colorScheme="warning"
+          onClick={() => showToast('warning')}
+        >
+          Warning Toast
+        </Button>
+      </div>
+
+      <Toast
+        open={toasts.default}
+        onOpenChange={(open) => setToasts((p) => ({ ...p, default: open }))}
+        duration={3000}
+      >
+        <div className="flex-1">
+          <ToastTitle>Default notification</ToastTitle>
+          <ToastDescription>This is a default toast message.</ToastDescription>
+        </div>
+        <ToastClose />
+      </Toast>
+
+      <Toast
+        open={toasts.primary}
+        onOpenChange={(open) => setToasts((p) => ({ ...p, primary: open }))}
+        duration={3000}
+        colorScheme="primary"
+      >
+        <div className="flex-1">
+          <ToastTitle>Information</ToastTitle>
+          <ToastDescription>This is an informational message.</ToastDescription>
+        </div>
+        <ToastClose />
+      </Toast>
+
+      <Toast
+        open={toasts.secondary}
+        onOpenChange={(open) => setToasts((p) => ({ ...p, secondary: open }))}
+        duration={3000}
+        colorScheme="secondary"
+      >
+        <div className="flex-1">
+          <ToastTitle>Update available</ToastTitle>
+          <ToastDescription>A new version is available.</ToastDescription>
+        </div>
+        <ToastClose />
+      </Toast>
+
+      <Toast
+        open={toasts.destructive}
+        onOpenChange={(open) => setToasts((p) => ({ ...p, destructive: open }))}
+        duration={3000}
+        colorScheme="destructive"
+      >
+        <div className="flex-1">
+          <ToastTitle>Error</ToastTitle>
+          <ToastDescription>
+            Something went wrong. Please try again.
+          </ToastDescription>
+        </div>
+        <ToastClose />
+      </Toast>
+
+      <Toast
+        open={toasts.success}
+        onOpenChange={(open) => setToasts((p) => ({ ...p, success: open }))}
+        duration={3000}
+        colorScheme="success"
+      >
+        <div className="flex-1">
+          <ToastTitle>Success</ToastTitle>
+          <ToastDescription>
+            Your changes have been saved successfully.
+          </ToastDescription>
+        </div>
+        <ToastClose />
+      </Toast>
+
+      <Toast
+        open={toasts.warning}
+        onOpenChange={(open) => setToasts((p) => ({ ...p, warning: open }))}
+        duration={3000}
+        colorScheme="warning"
+      >
+        <div className="flex-1">
+          <ToastTitle>Warning</ToastTitle>
+          <ToastDescription>
+            Please review your changes before proceeding.
+          </ToastDescription>
+        </div>
+        <ToastClose />
+      </Toast>
+
+      <ToastViewport position="bottom-right" />
+    </ToastProvider>
+  )
 }
 
 export const ColorSchemes: Story = {
-  render: () => {
-    const [toasts, setToasts] = useState({
-      default: false,
-      primary: false,
-      secondary: false,
-      destructive: false,
-      success: false,
-      warning: false,
-    })
-
-    const showToast = (type: keyof typeof toasts) => {
-      setToasts((prev) => ({ ...prev, [type]: true }))
-    }
-
-    return (
-      <ToastProvider swipeDirection="right">
-        <div className="flex flex-wrap gap-2">
-          <Button variant="outline" onClick={() => showToast('default')}>
-            Default Toast
-          </Button>
-          <Button
-            variant="outline"
-            colorScheme="primary"
-            onClick={() => showToast('primary')}
-          >
-            Primary Toast
-          </Button>
-          <Button
-            variant="outline"
-            colorScheme="secondary"
-            onClick={() => showToast('secondary')}
-          >
-            Secondary Toast
-          </Button>
-          <Button
-            variant="outline"
-            colorScheme="destructive"
-            onClick={() => showToast('destructive')}
-          >
-            Destructive Toast
-          </Button>
-          <Button
-            variant="outline"
-            colorScheme="success"
-            onClick={() => showToast('success')}
-          >
-            Success Toast
-          </Button>
-          <Button
-            variant="outline"
-            colorScheme="warning"
-            onClick={() => showToast('warning')}
-          >
-            Warning Toast
-          </Button>
-        </div>
-
-        <Toast
-          open={toasts.default}
-          onOpenChange={(open) => setToasts((p) => ({ ...p, default: open }))}
-          duration={3000}
-        >
-          <div className="flex-1">
-            <ToastTitle>Default notification</ToastTitle>
-            <ToastDescription>
-              This is a default toast message.
-            </ToastDescription>
-          </div>
-          <ToastClose />
-        </Toast>
-
-        <Toast
-          open={toasts.primary}
-          onOpenChange={(open) => setToasts((p) => ({ ...p, primary: open }))}
-          duration={3000}
-          colorScheme="primary"
-        >
-          <div className="flex-1">
-            <ToastTitle>Information</ToastTitle>
-            <ToastDescription>
-              This is an informational message.
-            </ToastDescription>
-          </div>
-          <ToastClose />
-        </Toast>
-
-        <Toast
-          open={toasts.secondary}
-          onOpenChange={(open) => setToasts((p) => ({ ...p, secondary: open }))}
-          duration={3000}
-          colorScheme="secondary"
-        >
-          <div className="flex-1">
-            <ToastTitle>Update available</ToastTitle>
-            <ToastDescription>A new version is available.</ToastDescription>
-          </div>
-          <ToastClose />
-        </Toast>
-
-        <Toast
-          open={toasts.destructive}
-          onOpenChange={(open) =>
-            setToasts((p) => ({ ...p, destructive: open }))
-          }
-          duration={3000}
-          colorScheme="destructive"
-        >
-          <div className="flex-1">
-            <ToastTitle>Error</ToastTitle>
-            <ToastDescription>
-              Something went wrong. Please try again.
-            </ToastDescription>
-          </div>
-          <ToastClose />
-        </Toast>
-
-        <Toast
-          open={toasts.success}
-          onOpenChange={(open) => setToasts((p) => ({ ...p, success: open }))}
-          duration={3000}
-          colorScheme="success"
-        >
-          <div className="flex-1">
-            <ToastTitle>Success</ToastTitle>
-            <ToastDescription>
-              Your changes have been saved successfully.
-            </ToastDescription>
-          </div>
-          <ToastClose />
-        </Toast>
-
-        <Toast
-          open={toasts.warning}
-          onOpenChange={(open) => setToasts((p) => ({ ...p, warning: open }))}
-          duration={3000}
-          colorScheme="warning"
-        >
-          <div className="flex-1">
-            <ToastTitle>Warning</ToastTitle>
-            <ToastDescription>
-              Please review your changes before proceeding.
-            </ToastDescription>
-          </div>
-          <ToastClose />
-        </Toast>
-
-        <ToastViewport position="bottom-right" />
-      </ToastProvider>
-    )
-  },
+  render: () => <ToastColorSchemes />,
   parameters: {
     docs: {
       description: {

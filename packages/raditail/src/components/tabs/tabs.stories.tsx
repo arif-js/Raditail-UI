@@ -35,6 +35,36 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {}
 
+const ControlledTabsDemo = ({ value: valueProp }: { value?: string }) => {
+  const [value, setValue] = React.useState(valueProp || 'account')
+
+  // Sync with Storybook controls
+  React.useEffect(() => {
+    if (valueProp !== undefined) {
+      setValue(valueProp)
+    }
+  }, [valueProp])
+
+  return (
+    <Tabs value={value} onValueChange={setValue}>
+      <TabsList aria-label="Controlled tabs">
+        <TabsTrigger value="account">Account</TabsTrigger>
+        <TabsTrigger value="security">Security</TabsTrigger>
+        <TabsTrigger value="notifications">Notifications</TabsTrigger>
+      </TabsList>
+      <TabsContent value="account">
+        Manage your personal account details.
+      </TabsContent>
+      <TabsContent value="security">
+        Update your password and MFA preferences.
+      </TabsContent>
+      <TabsContent value="notifications">
+        Configure email and push notifications.
+      </TabsContent>
+    </Tabs>
+  )
+}
+
 export const Controlled: Story = {
   args: {
     value: 'account',
@@ -49,35 +79,7 @@ export const Controlled: Story = {
       },
     },
   },
-  render: (args) => {
-    const [value, setValue] = React.useState(args.value || 'account')
-
-    // Sync with Storybook controls
-    React.useEffect(() => {
-      if (args.value !== undefined) {
-        setValue(args.value)
-      }
-    }, [args.value])
-
-    return (
-      <Tabs value={value} onValueChange={setValue}>
-        <TabsList aria-label="Controlled tabs">
-          <TabsTrigger value="account">Account</TabsTrigger>
-          <TabsTrigger value="security">Security</TabsTrigger>
-          <TabsTrigger value="notifications">Notifications</TabsTrigger>
-        </TabsList>
-        <TabsContent value="account">
-          Manage your personal account details.
-        </TabsContent>
-        <TabsContent value="security">
-          Update your password and MFA preferences.
-        </TabsContent>
-        <TabsContent value="notifications">
-          Configure email and push notifications.
-        </TabsContent>
-      </Tabs>
-    )
-  },
+  render: (args) => <ControlledTabsDemo {...args} />,
   parameters: {
     docs: {
       source: {

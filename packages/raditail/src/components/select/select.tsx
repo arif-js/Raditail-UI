@@ -17,7 +17,7 @@ export const SelectTrigger = React.forwardRef<
   <SelectPrimitive.Trigger
     ref={ref}
     className={cn(
-      'inline-flex w-full items-center justify-between gap-2 rounded-[var(--rt-radius-md)] border border-[--rt-border-color] bg-[--rt-bg] text-[--rt-foreground] shadow-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[--rt-primary-color]/40 disabled:cursor-not-allowed disabled:opacity-50',
+      'inline-flex w-full items-center justify-between gap-2 rounded-[var(--rt-radius-md)] border border-[--rt-border-color] bg-[--rt-bg] text-[--rt-foreground] shadow-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-rt-primary/40 disabled:cursor-not-allowed disabled:opacity-50',
       fieldSizeClasses[size],
       className
     )}

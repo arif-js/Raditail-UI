@@ -138,7 +138,7 @@ export const DialogContent = React.forwardRef<
             <DialogPrimitive.Close
               {...closeButtonProps}
               className={cn(
-                'absolute right-4 top-4 inline-flex h-8 w-8 items-center justify-center rounded-[var(--rt-radius-full)] text-[var(--rt-muted-foreground)] transition hover:bg-[var(--rt-muted-bg)] hover:text-[var(--rt-foreground)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--rt-primary-color)]/40',
+                'absolute right-4 top-4 inline-flex h-8 w-8 items-center justify-center rounded-[var(--rt-radius-full)] text-[var(--rt-muted-foreground)] transition hover:bg-[var(--rt-muted-bg)] hover:text-[var(--rt-foreground)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rt-primary/40',
                 closeButtonProps?.className
               )}
               aria-label={closeButtonAriaLabel}

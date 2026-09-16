@@ -15,14 +15,18 @@ Buttons expose `variant`, `size`, and `isLoading` via `class-variance-authority`
 <Button variant="ghost" className="ml-2">
   Ghost
 </Button>
-<Button size="icon" className="ml-2" aria-label="Refresh">
-  ↻
-</Button>
+<Button
+  icon={<span aria-hidden>↻</span>}
+  className="ml-2"
+  aria-label="Refresh"
+/>
+
+Use the `icon` prop without children to render an icon-only button; the width is derived from `size`.
 
 ```tsx
 <Button variant="solid">Primary</Button>
 <Button variant="outline">Outline</Button>
-<Button size="icon">Icon button</Button>
+<Button icon={<RefreshIcon />} aria-label="Refresh" />
 ```
 
 Use `asChild` to combine with Next.js `Link` or any custom component.

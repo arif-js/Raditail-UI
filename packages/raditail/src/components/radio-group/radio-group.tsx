@@ -21,7 +21,7 @@ export const RadioGroupItem = React.forwardRef<
   <RadioGroupPrimitive.Item
     ref={ref}
     className={cn(
-      'aspect-square rounded-full border border-[var(--rt-border-color] text-[var(--rt-primary-color] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--rt-primary-color] disabled:cursor-not-allowed disabled:opacity-50',
+      'aspect-square rounded-full border border-[var(--rt-border-color)] text-[var(--rt-primary-color)] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--rt-primary-color)] disabled:cursor-not-allowed disabled:opacity-50',
       radioControlSizeClasses[size],
       className
     )}
@@ -29,12 +29,14 @@ export const RadioGroupItem = React.forwardRef<
     {...props}
   >
     <RadioGroupPrimitive.Indicator className="flex items-center justify-center">
-      <span
-        className={cn(
-          'rounded-full bg-[var(--rt-primary-color)]',
-          radioIndicatorSizeClasses[size]
-        )}
-      />
+      {children ?? (
+        <span
+          className={cn(
+            'rounded-full bg-[var(--rt-primary-color)]',
+            radioIndicatorSizeClasses[size]
+          )}
+        />
+      )}
     </RadioGroupPrimitive.Indicator>
   </RadioGroupPrimitive.Item>
 ))

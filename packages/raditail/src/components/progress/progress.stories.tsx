@@ -84,7 +84,7 @@ export const Complete: Story = {
   ),
 }
 
-const Small: Story = {
+export const Small: Story = {
   args: {
     size: 'sm',
     value: 60,
@@ -103,7 +103,7 @@ const Small: Story = {
   ),
 }
 
-const Large: Story = {
+export const Large: Story = {
   args: {
     size: 'lg',
     value: 75,
@@ -137,7 +137,7 @@ export const Animated: Story = {
   ),
 }
 
-const WithDifferentSizes: Story = {
+export const WithDifferentSizes: Story = {
   parameters: {
     docs: {
       disable: true,

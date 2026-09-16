@@ -27,7 +27,7 @@ A beautiful, accessible React component library built on Radix UI primitives and
 
 ## Components
 
-Button • Dialog • Select • Tabs • Tooltip • Input • Accordion • Alert Dialog • Avatar • Checkbox • Collapsible • Context Menu • Dropdown Menu • Hover Card • Navigation Menu • Popover • Progress • Radio Group • Scroll Area • Separator • Sheet • Slider • Switch • Toast • Toggle Group
+Button • Dialog • Select • Tabs • Tooltip • Input • Accordion • Alert Dialog • Avatar • Checkbox • Collapsible • Context Menu • Dropdown Menu • Hover Card • Popover • Progress • Radio Group • Scroll Area • Separator • Sheet • Slider • Switch • Toast • Toggle Group
 
 ## Installation
 
@@ -92,7 +92,7 @@ import {
 function App() {
   return (
     <div>
-      <Button variant="primary" size="md">
+      <Button variant="solid" colorScheme="primary" size="md">
         Click me
       </Button>
 
