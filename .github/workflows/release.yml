@@ -4,7 +4,6 @@ on:
   push:
     branches: [main]
 
-# Never let two releases run at once; a second publish of the same version fails.
 concurrency:
   group: release-${{ github.ref }}
   cancel-in-progress: false
@@ -14,20 +13,15 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      # Required by changesets/action to open the "Version Packages" PR. With a
-      # `permissions:` block present, anything omitted defaults to `none`.
-      pull-requests: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Setup PNPM
         uses: pnpm/action-setup@v3
         with:
           version: 9.12.1
-      # Deliberately no `registry-url:` here. It makes setup-node write its own
-      # .npmrc and point NPM_CONFIG_USERCONFIG at it, which shadows the ~/.npmrc
-      # that changesets/action writes the token into -- that shadowing is what
-      # produced ENEEDAUTH at publish time.
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
@@ -38,25 +32,34 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           if [ -z "$NPM_TOKEN" ]; then
-            echo "::error::The NPM_TOKEN repository secret is missing or empty. Create an npm Automation token at https://www.npmjs.com/settings/~/tokens and add it under Settings -> Secrets and variables -> Actions."
+            echo "::error::NPM_TOKEN repository secret is missing or empty."
             exit 1
           fi
           npm config set //registry.npmjs.org/:_authToken "$NPM_TOKEN"
-          # Fails the job here, with a readable error, if the token is invalid or
-          # expired -- rather than halfway through `changeset publish`.
           npm whoami --registry https://registry.npmjs.org/
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-      # `dist` is gitignored, and the package's `files` field ships only `dist`.
-      # Without this the published tarball would contain no code at all.
       - name: Build library
         run: pnpm --filter raditail build
-      - name: Create release PR or publish
-        uses: changesets/action@v1
-        with:
-          version: pnpm changeset version
-          publish: pnpm changeset publish
+      - name: Version, publish and push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # changesets/action also reads NPM_TOKEN itself to top up ~/.npmrc.
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Consume any pending changesets: bump versions, write changelogs.
+          pnpm changeset version
+          pnpm install --no-frozen-lockfile --lockfile-only
+
+          if ! git diff --quiet; then
+            git add -A
+            git commit -m "chore: version packages [skip ci]"
+          fi
+
+          # Publishes anything whose version is not yet on npm, and creates tags.
+          pnpm changeset publish
+
+          # Pushes made with GITHUB_TOKEN do not re-trigger workflows, so this
+          # cannot loop.
+          git push --follow-tags origin HEAD:main
