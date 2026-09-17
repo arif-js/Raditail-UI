@@ -11,20 +11,37 @@ A beautiful, accessible React component library built on Radix UI and Tailwind C
 - 🎨 **Beautiful Design** - Modern, clean components with Tailwind CSS
 - ♿ **Accessible** - Built on Radix UI primitives for excellent a11y
 - 🎭 **Themeable** - Easy customization with CSS variables
-- 📦 **Tree-shakeable** - Import only what you need
+- 📦 **Tree-shakeable** - Per-component modules and entry points, so importing one
+  component does not pull in the library
 - 🔧 **TypeScript** - Full type safety out of the box
 - 🎯 **Composable** - Flexible component APIs
 
 ## Components
 
-Explore our comprehensive collection of components in the sidebar:
+Explore the collection in the sidebar:
 
 - **Button** - Versatile button with multiple variants
-- **Dialog** - Modal dialogs and alert dialogs
+- **Dialog** / **Alert Dialog** / **Sheet** - Modal surfaces
 - **Select** - Accessible select dropdown
-- **Tooltip** - Informative tooltips
-- **Tabs** - Tab navigation components
-- And many more...
+- **Dropdown Menu** / **Context Menu** - Menus with optional keyboard shortcuts
+- **Tooltip** / **Popover** / **Hover Card** - Floating content
+- **Card**, **Table**, **Badge**, **Skeleton**, **Textarea** - Layout and data display
+- **Toaster** - Toast queue with a `useToast` hook
+- And more: Accordion, Avatar, Checkbox, Collapsible, Input, Progress, Radio Group,
+  Scroll Area, Separator, Slider, Switch, Tabs, Toggle Group.
+
+## Before you wire components together
+
+Five rules are not visible from the type signatures, and they cause most
+integration bugs. They are covered in full in `COMPOSITION.md` in the package:
+
+1. `DialogContent`, `SheetContent` and `AlertDialogContent` already render their own
+   portal **and** overlay — do not wrap them in `DialogPortal` / `DialogOverlay`.
+2. `DropdownMenu`'s `children` render as a sibling of the trigger. Use `menuItems`, or
+   pass an explicit `DropdownMenuContent`.
+3. Colour utilities are namespaced: `bg-rt-primary`, `text-rt-muted-foreground`.
+4. `Accordion` defaults to `type="single"`, which needs `collapsible` to be closable.
+5. `DialogContent` renders no close button by default — pass `showCloseButton`.
 
 ## Author
 
@@ -34,21 +51,27 @@ Project: [Raditail UI](https://github.com/arif-js/Raditail-UI)
 
 ## Getting Started
 
+`react` and `react-dom` are the only required peers. The Radix primitives,
+`lucide-react` and Tailwind CSS (v3.4+, **not v4**) are optional: install the ones your
+imports need.
+
 ```bash
-# Install the package
-npm install raditail
+# Required
+npm install raditail react react-dom
 
-# Or with pnpm
-pnpm add raditail
-
-# Or with yarn
-yarn add raditail
+# Importing from the barrel reaches every component, so it needs every primitive.
+# Importing one component on its own needs only that component's primitive:
+npm install @radix-ui/react-slot   # for raditail/button
 ```
 
 ## Usage
 
 ```tsx
+// From the barrel
 import { Button } from 'raditail'
+
+// Or from a single component's entry point, which pulls in less
+import { Button } from 'raditail/button'
 
 function App() {
   return (

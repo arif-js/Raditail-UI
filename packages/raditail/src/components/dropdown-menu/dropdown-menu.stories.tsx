@@ -2,6 +2,11 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { Button } from '../button/button'
 import {
   DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
   DropdownMenuTrigger,
   type DropdownMenuGeneratedItem,
 } from './dropdown-menu'
@@ -17,6 +22,16 @@ const generatedItems: DropdownMenuGeneratedItem[] = [
 const meta: Meta = {
   tags: ['autodocs'],
   title: 'Components/Dropdown Menu',
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'Note: `DropdownMenu` renders its `children` as a sibling of the trigger, ' +
+          '**not** inside the menu. Use the `menuItems` prop for generated menus, or ' +
+          'pass an explicit `DropdownMenuContent` to place your own markup inside the menu.',
+      },
+    },
+  },
   argTypes: {
     size: {
       control: 'inline-radio',
@@ -50,3 +65,36 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {}
+
+export const CustomContentWithShortcuts: Story = {
+  render: () => (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline">Account</Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent>
+        <DropdownMenuLabel>Signed in as ada</DropdownMenuLabel>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem>
+          Profile <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          Settings <DropdownMenuShortcut>⌘,</DropdownMenuShortcut>
+        </DropdownMenuItem>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem>
+          Sign out <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Custom markup needs an explicit `DropdownMenuContent` — it portals the items ' +
+          'into the menu. `DropdownMenuShortcut` renders the keyboard hint on the right.',
+      },
+    },
+  },
+}

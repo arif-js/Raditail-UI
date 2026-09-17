@@ -35,6 +35,10 @@ jobs:
         run: pnpm test
       - name: Build library
         run: pnpm --filter raditail build
+      # Stories are not type-checked by the library build and are not published,
+      # so nothing else here would catch a story referencing a removed prop.
+      - name: Build Storybook
+        run: pnpm --filter raditail build-storybook
       - name: Build docs
         run: pnpm --filter docs build
 

@@ -29,8 +29,15 @@ const meta: Meta<DialogStoryArgs> = {
   parameters: {
     docs: {
       description: {
-        component:
+        component: [
           'A modal dialog that overlays the page content and captures focus.',
+          '',
+          '`DialogContent` already renders its own **portal and overlay** — do not wrap it in',
+          '`DialogPortal` / `DialogOverlay`, or the backdrop is rendered twice.',
+          '',
+          'It also renders **no close button unless you pass `showCloseButton`**, so the escapes',
+          'are Escape and clicking the overlay.',
+        ].join('\n'),
       },
     },
   },
