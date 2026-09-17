@@ -9,3 +9,6 @@ coverage
 .vscode
 .vercel
 .commandcode
+
+# Personal, machine-local notes (publishing runbook, scratch files)
+*.local.md

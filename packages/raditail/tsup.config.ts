@@ -50,8 +50,11 @@ const shared: Options = {
 export default defineConfig([
   {
     ...shared,
+    // Cleaning is done by the `clean` script before tsup starts. tsup builds
+    // these two configs concurrently, so a `clean` here races the other
+    // config's output and can delete files it has already emitted.
     entry: { index: 'src/index.ts' },
-    clean: true,
+    clean: false,
   },
   {
     ...shared,

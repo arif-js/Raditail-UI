@@ -145,8 +145,8 @@ This repository is a monorepo that contains:
 
 ### Prerequisites
 
-- Node.js 18+
-- pnpm 8+
+- Node.js 20 or newer (below 23)
+- pnpm 9 (`corepack enable` picks up the pinned version)
 
 ### Setup
 
@@ -176,12 +176,79 @@ pnpm dev
 
 ## Contributing
 
-Contributions are welcome! Please read [CONTRIBUTING.md](./CONTRIBUTING.md) before opening a PR.
+Contributions are welcome, whether that's a typo fix, a bug report, or a brand-new component.
+Please read **[CONTRIBUTING.md](./CONTRIBUTING.md)** first — it covers the full workflow, coding
+guidelines, and how to run the test suite.
 
-- Use pnpm v8 or newer
-- Run tests/linting before pushing
-- Add stories and tests for new components
-- Follow the established coding style and commit conventions
+The short version:
+
+1. **Open an issue first** for anything non-trivial, so the approach can be agreed before you write
+   code.
+2. **Fork** the repo and branch from `main` (`git checkout -b feat/my-component`).
+3. **Make your change**, adding Storybook stories for UI work and tests for logic.
+4. **Run the checks** that CI runs:
+   ```bash
+   pnpm lint && pnpm typecheck && pnpm --filter raditail test && pnpm --filter raditail build
+   ```
+5. **Add a changeset** if your change affects the published package:
+   ```bash
+   pnpm changeset
+   ```
+   Docs- and tooling-only changes don't need one.
+6. **Commit using [Conventional Commits](https://www.conventionalcommits.org/)**
+   (e.g. `feat: add badge component`), then open a pull request against `main` and link the issue.
+
+## Reporting Issues
+
+All bugs and feature requests are tracked on the
+**[GitHub issue tracker](https://github.com/arif-js/Raditail-UI/issues)**.
+
+Before opening one, please
+[search existing issues](https://github.com/arif-js/Raditail-UI/issues?q=is%3Aissue) — it may
+already be reported or fixed on `main`.
+
+### Bug reports
+
+A good report is one someone else can reproduce. Please include:
+
+- **The version of `raditail`** you're on (`npm list raditail`), plus your React and Tailwind
+  versions.
+- **Your environment** — framework and version (Next.js App Router, Vite, etc.), Node version, and
+  browser if it's a rendering or accessibility issue.
+- **What you expected to happen**, and **what actually happened**, including the exact error text
+  rather than a paraphrase.
+- **A minimal reproduction** — a short code snippet, a StackBlitz, or a small repo. The smaller it
+  is, the faster it gets fixed.
+
+[**→ Open a bug report**](https://github.com/arif-js/Raditail-UI/issues/new)
+
+### Feature requests
+
+Describe the **problem you're trying to solve** before the solution you have in mind, and say
+whether you'd be willing to implement it. Requests to wrap an existing Radix primitive are
+especially welcome; please link the primitive's docs.
+
+[**→ Request a feature**](https://github.com/arif-js/Raditail-UI/issues/new)
+
+### Questions and support
+
+For "how do I…" questions, these are usually faster than waiting on an issue:
+
+- The **[live Storybook](https://raditail-storybook.vercel.app)** — working examples and live
+  controls for every component.
+- The **[package guide](./packages/raditail/README.md)** — installation, theming, and the export
+  map.
+
+If neither answers it, open an issue and prefix the title with `Question:` so it can be triaged
+apart from bug reports.
+
+## Security
+
+**Please do not report security vulnerabilities through public GitHub issues.**
+
+Email **contact@arifcodes.com** instead, with a description of the issue, the steps to reproduce
+it, and the affected version. You'll get an acknowledgement, and please give a reasonable window
+for a fix before any public disclosure.
 
 ## License
 

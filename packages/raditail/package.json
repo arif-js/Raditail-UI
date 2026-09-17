@@ -64,7 +64,7 @@
     "typecheck": "tsc --project tsconfig.spec.json --noEmit",
     "test": "vitest run",
     "test:watch": "vitest --watch",
-    "build": "tsup --clean && node ./scripts/add-use-client.mjs && node ./scripts/copy-theme-css.mjs",
+    "build": "pnpm clean && tsup && node ./scripts/add-use-client.mjs && node ./scripts/copy-theme-css.mjs",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build -c .storybook -o storybook-static",
     "clean": "rimraf dist"

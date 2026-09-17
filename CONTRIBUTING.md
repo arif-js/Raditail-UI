@@ -5,8 +5,8 @@ Whether you spotted a typo, discovered a bug, or want to add a brand‑new compo
 
 ## Prerequisites
 
-- Node.js 18 or newer
-- pnpm 8 or newer (`corepack enable` enables pnpm automatically)
+- Node.js 20 or newer, below 23 (matches the `engines` field)
+- pnpm 9 (`corepack enable` picks up the version pinned in `packageManager`)
 - A GitHub account
 
 ## Getting Started
@@ -73,7 +73,7 @@ We use [Changesets](https://github.com/changesets/changesets) to manage versioni
 ## Reporting Security Issues
 
 Please do **not** create public issues for security concerns.  
-Instead, email **security@raditail.dev** with details.
+Instead, email **contact@arifcodes.com** with details.
 
 ---
 
