@@ -1,0 +1,38 @@
+export const metadata = {
+  title: 'Button',
+}
+
+import { Button } from 'raditail'
+
+# Button
+
+Buttons expose `variant`, `size`, and `isLoading` via `class-variance-authority`.
+
+<Button variant="solid">Primary</Button>
+<Button variant="outline" className="ml-2">
+  Outline
+</Button>
+<Button variant="ghost" className="ml-2">
+  Ghost
+</Button>
+<Button
+  icon={<span aria-hidden>↻</span>}
+  className="ml-2"
+  aria-label="Refresh"
+/>
+
+Use the `icon` prop without children to render an icon-only button; the width is derived from `size`.
+
+```tsx
+<Button variant="solid">Primary</Button>
+<Button variant="outline">Outline</Button>
+<Button icon={<RefreshIcon />} aria-label="Refresh" />
+```
+
+Use `asChild` to combine with Next.js `Link` or any custom component.
+
+```tsx
+<Button asChild>
+  <Link href="/docs">Docs</Link>
+</Button>
+```

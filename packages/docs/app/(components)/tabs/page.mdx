@@ -1,0 +1,31 @@
+export const metadata = {
+  title: 'Tabs',
+}
+
+import { Tabs, TabsContent, TabsList, TabsTrigger } from 'raditail'
+
+# Tabs
+
+Tabs support controlled and uncontrolled usage with animated focus rings.
+
+<Tabs defaultValue="overview" className="mt-4">
+  <TabsList>
+    <TabsTrigger value="overview">Overview</TabsTrigger>
+    <TabsTrigger value="details">Details</TabsTrigger>
+    <TabsTrigger value="history">History</TabsTrigger>
+  </TabsList>
+  <TabsContent value="overview">High level overview.</TabsContent>
+  <TabsContent value="details">Deep dive into the specifics.</TabsContent>
+  <TabsContent value="history">Track previous changes.</TabsContent>
+</Tabs>
+
+```tsx
+<Tabs defaultValue="overview">
+  <TabsList>
+    <TabsTrigger value="overview">Overview</TabsTrigger>
+    <TabsTrigger value="details">Details</TabsTrigger>
+  </TabsList>
+  <TabsContent value="overview">Overview content</TabsContent>
+  <TabsContent value="details">Details content</TabsContent>
+</Tabs>
+```

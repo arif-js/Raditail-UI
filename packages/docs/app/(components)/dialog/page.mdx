@@ -1,0 +1,52 @@
+export const metadata = {
+  title: 'Dialog',
+}
+
+import {
+  Button,
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from 'raditail'
+
+# Dialog
+
+`Dialog` wraps `@radix-ui/react-dialog` with animated overlay and responsive sizing options.
+
+<Dialog>
+  <DialogTrigger asChild>
+    <Button>Launch dialog</Button>
+  </DialogTrigger>
+  <DialogContent>
+    <DialogHeader>
+      <DialogTitle>Invite a teammate</DialogTitle>
+      <DialogDescription>
+        Send a link to collaborate in real time.
+      </DialogDescription>
+    </DialogHeader>
+    <div className="grid gap-3">
+      <label className="text-sm font-medium">
+        Email address
+        <input className="mt-1 w-full rounded-[var(--rt-radius-sm)] border border-[--rt-border-color] px-3 py-2" />
+      </label>
+      <Button>Send invite</Button>
+    </div>
+  </DialogContent>
+</Dialog>
+
+```tsx
+<Dialog>
+  <DialogTrigger asChild>
+    <Button>Launch dialog</Button>
+  </DialogTrigger>
+  <DialogContent size="lg">
+    <DialogHeader>
+      <DialogTitle>Dialog header</DialogTitle>
+      <DialogDescription>Dialog description</DialogDescription>
+    </DialogHeader>
+  </DialogContent>
+</Dialog>
+```

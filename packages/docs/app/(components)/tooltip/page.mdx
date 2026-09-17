@@ -1,0 +1,35 @@
+export const metadata = {
+  title: 'Tooltip',
+}
+
+import {
+  Button,
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from 'raditail'
+
+# Tooltip
+
+Tooltips are built on `@radix-ui/react-tooltip` with motion-safe fades and default spacing.
+
+<TooltipProvider>
+  <Tooltip>
+    <TooltipTrigger asChild>
+      <Button variant="ghost">Hover me</Button>
+    </TooltipTrigger>
+    <TooltipContent>Helpful information</TooltipContent>
+  </Tooltip>
+</TooltipProvider>
+
+```tsx
+<TooltipProvider>
+  <Tooltip>
+    <TooltipTrigger asChild>
+      <Button>Hover me</Button>
+    </TooltipTrigger>
+    <TooltipContent sideOffset={12}>Tooltip content</TooltipContent>
+  </Tooltip>
+</TooltipProvider>
+```
