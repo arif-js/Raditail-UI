@@ -14,7 +14,7 @@ A beautiful, accessible React component library built on Radix UI primitives and
 
 </div>
 
-# Starter
+## Starter
 Demo: raditail-starter.arifcodes.com 
 Repo: https://github.com/arif-js/raditail-starter
 
