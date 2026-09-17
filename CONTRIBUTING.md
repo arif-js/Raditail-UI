@@ -5,7 +5,7 @@ Whether you spotted a typo, discovered a bug, or want to add a brand‑new compo
 
 ## Prerequisites
 
-- Node.js 20 or newer, below 23 (matches the `engines` field)
+- Node.js 20 or newer
 - pnpm 9 (`corepack enable` picks up the version pinned in `packageManager`)
 - A GitHub account
 

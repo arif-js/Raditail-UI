@@ -22,7 +22,8 @@ A beautiful, accessible React component library built on Radix UI primitives and
 - **Customizable** - Powered by Tailwind CSS with full theme support
 - **Type-safe** - Written in TypeScript with full type definitions
 - **Dark Mode** - Built-in dark mode support
-- **Tree-shakeable** - Import only what you need
+- **Tree-shakeable** - Per-component modules and subpath entry points (`raditail/button`,
+  `raditail/dialog`, …), so importing one component does not pull in the rest of the library
 - **Modern** - ESM and CJS support, works with Next.js, Vite, and more
 
 ## Components
@@ -41,13 +42,21 @@ yarn add raditail
 
 ### Peer Dependencies
 
-Raditail requires the following peer dependencies:
+`react` and `react-dom` are required. Everything else — Tailwind CSS (v3.4+, **not v4**), the Radix
+primitives and `lucide-react` — is an optional peer: install the ones your imports actually need.
 
 ```bash
-npm install react react-dom tailwindcss
+npm install react react-dom
 ```
 
-Raditail keeps Radix primitives as peer dependencies so you can choose the ones you need. See the [full peer dependency list](./packages/raditail/package.json).
+Importing one component from its own entry point needs only that component's primitive:
+
+```bash
+npm install react react-dom @radix-ui/react-slot   # raditail/button
+```
+
+Importing from the `raditail` barrel reaches every component, so it needs every primitive. See the
+[package guide](./packages/raditail/README.md#which-peers-do-i-need) for the full list.
 
 ## Quick Start
 
@@ -145,7 +154,7 @@ This repository is a monorepo that contains:
 
 ### Prerequisites
 
-- Node.js 20 or newer (below 23)
+- Node.js 20 or newer
 - pnpm 9 (`corepack enable` picks up the pinned version)
 
 ### Setup
@@ -238,6 +247,8 @@ For "how do I…" questions, these are usually faster than waiting on an issue:
   controls for every component.
 - The **[package guide](./packages/raditail/README.md)** — installation, theming, and the export
   map.
+- **[COMPOSITION.md](./packages/raditail/COMPOSITION.md)** — the composition rules that are not
+  visible from the type signatures. Read this before wiring components together.
 
 If neither answers it, open an issue and prefix the title with `Question:` so it can be triaged
 apart from bug reports.

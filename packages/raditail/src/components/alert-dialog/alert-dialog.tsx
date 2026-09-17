@@ -55,7 +55,7 @@ export const AlertDialogAction = React.forwardRef<
   )
 )
 
-AlertDialogAction.displayName = AlertDialogPrimitive.Action.displayName
+AlertDialogAction.displayName = 'AlertDialogAction'
 
 export const AlertDialogCancel = React.forwardRef<
   React.ElementRef<typeof AlertDialogPrimitive.Cancel>,
@@ -90,7 +90,7 @@ export const AlertDialogCancel = React.forwardRef<
   )
 )
 
-AlertDialogCancel.displayName = AlertDialogPrimitive.Cancel.displayName
+AlertDialogCancel.displayName = 'AlertDialogCancel'
 
 export const AlertDialogOverlay = React.forwardRef<
   React.ElementRef<typeof AlertDialogPrimitive.Overlay>,
@@ -103,7 +103,7 @@ export const AlertDialogOverlay = React.forwardRef<
   />
 ))
 
-AlertDialogOverlay.displayName = AlertDialogPrimitive.Overlay.displayName
+AlertDialogOverlay.displayName = 'AlertDialogOverlay'
 
 export const AlertDialogContent = React.forwardRef<
   React.ElementRef<typeof AlertDialogPrimitive.Content>,
@@ -124,7 +124,7 @@ export const AlertDialogContent = React.forwardRef<
   </AlertDialogPortal>
 ))
 
-AlertDialogContent.displayName = AlertDialogPrimitive.Content.displayName
+AlertDialogContent.displayName = 'AlertDialogContent'
 
 export const AlertDialogHeader = ({
   className,
@@ -160,7 +160,7 @@ export const AlertDialogTitle = React.forwardRef<
   />
 ))
 
-AlertDialogTitle.displayName = AlertDialogPrimitive.Title.displayName
+AlertDialogTitle.displayName = 'AlertDialogTitle'
 
 export const AlertDialogDescription = React.forwardRef<
   React.ElementRef<typeof AlertDialogPrimitive.Description>,
@@ -173,5 +173,4 @@ export const AlertDialogDescription = React.forwardRef<
   />
 ))
 
-AlertDialogDescription.displayName =
-  AlertDialogPrimitive.Description.displayName
+AlertDialogDescription.displayName = 'AlertDialogDescription'

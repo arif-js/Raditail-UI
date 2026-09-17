@@ -23,6 +23,40 @@ The easiest way to change your theme is to override CSS variables in your global
 
 **Important:** Use RGB values (space-separated, no commas) for the color variables to support opacity modifiers.
 
+## Two layers of tokens
+
+There are two layers of CSS variables, and it is worth knowing which one you are overriding.
+
+**Layer 1 — raw channels.** `--rt-background`, `--rt-primary`, `--rt-border`: space-separated RGB
+triplets with no `rgb()` wrapper. These are the ones to override when you want a different colour,
+because the layer-2 values are derived from them. Wrapping them in `rgb()` is what makes Tailwind's
+opacity modifiers work.
+
+```css
+:root {
+  --rt-primary: 147 51 234; /* purple */
+}
+```
+
+**Layer 2 — resolved values.** `--rt-bg`, `--rt-primary-color`, `--rt-primary-contrast`,
+`--rt-border-color`: fully-formed `rgb(...)` values, each defined in terms of layer 1. These are what
+the components' arbitrary-value classes reference, e.g. `bg-[var(--rt-primary-color)]`.
+
+Because layer 2 is derived, overriding layer 1 is almost always what you want. Override layer 2 only
+to set a value that does not come from a single triplet.
+
+The two layers use two naming shapes, and this is intentional rather than drift:
+
+| Layer            | Shape                                      | Examples                                        |
+| ---------------- | ------------------------------------------ | ----------------------------------------------- |
+| 1 (raw channels) | `--rt-<semantic>`                          | `--rt-primary`, `--rt-muted`, `--rt-background` |
+| 2 (resolved)     | `--rt-<abbrev>` or `--rt-<semantic>-color` | `--rt-bg`, `--rt-fg`, `--rt-primary-color`      |
+
+The shorter layer-2 names (`--rt-bg`, `--rt-fg`) exist because they are the ones written by hand
+inside component classes; the longer ones keep the `-color` / `-contrast` suffix so a resolved value
+is never confused with its raw source. Both are public: they are documented here rather than renamed,
+since renaming them would break every existing theme.
+
 ## Available Semantic Colors
 
 Raditail provides semantic color tokens that you can easily customize:

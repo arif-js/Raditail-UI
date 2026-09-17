@@ -4,33 +4,345 @@
   "description": "A beautiful, accessible React component library built on Radix UI and Tailwind CSS",
   "private": false,
   "packageManager": "pnpm@9.12.1",
-  "engines": {
-    "node": ">=20 <23"
-  },
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs",
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      },
       "default": "./dist/index.mjs"
     },
     "./theme": {
-      "types": "./dist/theme/index.d.ts",
-      "import": "./dist/theme/index.mjs",
-      "require": "./dist/theme/index.cjs",
+      "import": {
+        "types": "./dist/theme/index.d.ts",
+        "default": "./dist/theme/index.mjs"
+      },
+      "require": {
+        "types": "./dist/theme/index.d.cts",
+        "default": "./dist/theme/index.cjs"
+      },
       "default": "./dist/theme/index.mjs"
     },
     "./theme/tailwind.css": "./dist/theme/tailwind.css",
     "./theme/styles.css": "./dist/theme/styles.css",
+    "./accordion": {
+      "import": {
+        "types": "./dist/accordion/index.d.ts",
+        "default": "./dist/accordion/index.mjs"
+      },
+      "require": {
+        "types": "./dist/accordion/index.d.cts",
+        "default": "./dist/accordion/index.cjs"
+      }
+    },
+    "./alert-dialog": {
+      "import": {
+        "types": "./dist/alert-dialog/index.d.ts",
+        "default": "./dist/alert-dialog/index.mjs"
+      },
+      "require": {
+        "types": "./dist/alert-dialog/index.d.cts",
+        "default": "./dist/alert-dialog/index.cjs"
+      }
+    },
+    "./avatar": {
+      "import": {
+        "types": "./dist/avatar/index.d.ts",
+        "default": "./dist/avatar/index.mjs"
+      },
+      "require": {
+        "types": "./dist/avatar/index.d.cts",
+        "default": "./dist/avatar/index.cjs"
+      }
+    },
+    "./badge": {
+      "import": {
+        "types": "./dist/badge/index.d.ts",
+        "default": "./dist/badge/index.mjs"
+      },
+      "require": {
+        "types": "./dist/badge/index.d.cts",
+        "default": "./dist/badge/index.cjs"
+      }
+    },
+    "./button": {
+      "import": {
+        "types": "./dist/button/index.d.ts",
+        "default": "./dist/button/index.mjs"
+      },
+      "require": {
+        "types": "./dist/button/index.d.cts",
+        "default": "./dist/button/index.cjs"
+      }
+    },
+    "./card": {
+      "import": {
+        "types": "./dist/card/index.d.ts",
+        "default": "./dist/card/index.mjs"
+      },
+      "require": {
+        "types": "./dist/card/index.d.cts",
+        "default": "./dist/card/index.cjs"
+      }
+    },
+    "./checkbox": {
+      "import": {
+        "types": "./dist/checkbox/index.d.ts",
+        "default": "./dist/checkbox/index.mjs"
+      },
+      "require": {
+        "types": "./dist/checkbox/index.d.cts",
+        "default": "./dist/checkbox/index.cjs"
+      }
+    },
+    "./collapsible": {
+      "import": {
+        "types": "./dist/collapsible/index.d.ts",
+        "default": "./dist/collapsible/index.mjs"
+      },
+      "require": {
+        "types": "./dist/collapsible/index.d.cts",
+        "default": "./dist/collapsible/index.cjs"
+      }
+    },
+    "./context-menu": {
+      "import": {
+        "types": "./dist/context-menu/index.d.ts",
+        "default": "./dist/context-menu/index.mjs"
+      },
+      "require": {
+        "types": "./dist/context-menu/index.d.cts",
+        "default": "./dist/context-menu/index.cjs"
+      }
+    },
+    "./dialog": {
+      "import": {
+        "types": "./dist/dialog/index.d.ts",
+        "default": "./dist/dialog/index.mjs"
+      },
+      "require": {
+        "types": "./dist/dialog/index.d.cts",
+        "default": "./dist/dialog/index.cjs"
+      }
+    },
+    "./dropdown-menu": {
+      "import": {
+        "types": "./dist/dropdown-menu/index.d.ts",
+        "default": "./dist/dropdown-menu/index.mjs"
+      },
+      "require": {
+        "types": "./dist/dropdown-menu/index.d.cts",
+        "default": "./dist/dropdown-menu/index.cjs"
+      }
+    },
+    "./hover-card": {
+      "import": {
+        "types": "./dist/hover-card/index.d.ts",
+        "default": "./dist/hover-card/index.mjs"
+      },
+      "require": {
+        "types": "./dist/hover-card/index.d.cts",
+        "default": "./dist/hover-card/index.cjs"
+      }
+    },
+    "./input": {
+      "import": {
+        "types": "./dist/input/index.d.ts",
+        "default": "./dist/input/index.mjs"
+      },
+      "require": {
+        "types": "./dist/input/index.d.cts",
+        "default": "./dist/input/index.cjs"
+      }
+    },
+    "./popover": {
+      "import": {
+        "types": "./dist/popover/index.d.ts",
+        "default": "./dist/popover/index.mjs"
+      },
+      "require": {
+        "types": "./dist/popover/index.d.cts",
+        "default": "./dist/popover/index.cjs"
+      }
+    },
+    "./progress": {
+      "import": {
+        "types": "./dist/progress/index.d.ts",
+        "default": "./dist/progress/index.mjs"
+      },
+      "require": {
+        "types": "./dist/progress/index.d.cts",
+        "default": "./dist/progress/index.cjs"
+      }
+    },
+    "./radio-group": {
+      "import": {
+        "types": "./dist/radio-group/index.d.ts",
+        "default": "./dist/radio-group/index.mjs"
+      },
+      "require": {
+        "types": "./dist/radio-group/index.d.cts",
+        "default": "./dist/radio-group/index.cjs"
+      }
+    },
+    "./scroll-area": {
+      "import": {
+        "types": "./dist/scroll-area/index.d.ts",
+        "default": "./dist/scroll-area/index.mjs"
+      },
+      "require": {
+        "types": "./dist/scroll-area/index.d.cts",
+        "default": "./dist/scroll-area/index.cjs"
+      }
+    },
+    "./select": {
+      "import": {
+        "types": "./dist/select/index.d.ts",
+        "default": "./dist/select/index.mjs"
+      },
+      "require": {
+        "types": "./dist/select/index.d.cts",
+        "default": "./dist/select/index.cjs"
+      }
+    },
+    "./separator": {
+      "import": {
+        "types": "./dist/separator/index.d.ts",
+        "default": "./dist/separator/index.mjs"
+      },
+      "require": {
+        "types": "./dist/separator/index.d.cts",
+        "default": "./dist/separator/index.cjs"
+      }
+    },
+    "./sheet": {
+      "import": {
+        "types": "./dist/sheet/index.d.ts",
+        "default": "./dist/sheet/index.mjs"
+      },
+      "require": {
+        "types": "./dist/sheet/index.d.cts",
+        "default": "./dist/sheet/index.cjs"
+      }
+    },
+    "./skeleton": {
+      "import": {
+        "types": "./dist/skeleton/index.d.ts",
+        "default": "./dist/skeleton/index.mjs"
+      },
+      "require": {
+        "types": "./dist/skeleton/index.d.cts",
+        "default": "./dist/skeleton/index.cjs"
+      }
+    },
+    "./slider": {
+      "import": {
+        "types": "./dist/slider/index.d.ts",
+        "default": "./dist/slider/index.mjs"
+      },
+      "require": {
+        "types": "./dist/slider/index.d.cts",
+        "default": "./dist/slider/index.cjs"
+      }
+    },
+    "./switch": {
+      "import": {
+        "types": "./dist/switch/index.d.ts",
+        "default": "./dist/switch/index.mjs"
+      },
+      "require": {
+        "types": "./dist/switch/index.d.cts",
+        "default": "./dist/switch/index.cjs"
+      }
+    },
+    "./table": {
+      "import": {
+        "types": "./dist/table/index.d.ts",
+        "default": "./dist/table/index.mjs"
+      },
+      "require": {
+        "types": "./dist/table/index.d.cts",
+        "default": "./dist/table/index.cjs"
+      }
+    },
+    "./tabs": {
+      "import": {
+        "types": "./dist/tabs/index.d.ts",
+        "default": "./dist/tabs/index.mjs"
+      },
+      "require": {
+        "types": "./dist/tabs/index.d.cts",
+        "default": "./dist/tabs/index.cjs"
+      }
+    },
+    "./textarea": {
+      "import": {
+        "types": "./dist/textarea/index.d.ts",
+        "default": "./dist/textarea/index.mjs"
+      },
+      "require": {
+        "types": "./dist/textarea/index.d.cts",
+        "default": "./dist/textarea/index.cjs"
+      }
+    },
+    "./toast": {
+      "import": {
+        "types": "./dist/toast/index.d.ts",
+        "default": "./dist/toast/index.mjs"
+      },
+      "require": {
+        "types": "./dist/toast/index.d.cts",
+        "default": "./dist/toast/index.cjs"
+      }
+    },
+    "./toaster": {
+      "import": {
+        "types": "./dist/toaster/index.d.ts",
+        "default": "./dist/toaster/index.mjs"
+      },
+      "require": {
+        "types": "./dist/toaster/index.d.cts",
+        "default": "./dist/toaster/index.cjs"
+      }
+    },
+    "./toggle-group": {
+      "import": {
+        "types": "./dist/toggle-group/index.d.ts",
+        "default": "./dist/toggle-group/index.mjs"
+      },
+      "require": {
+        "types": "./dist/toggle-group/index.d.cts",
+        "default": "./dist/toggle-group/index.cjs"
+      }
+    },
+    "./tooltip": {
+      "import": {
+        "types": "./dist/tooltip/index.d.ts",
+        "default": "./dist/tooltip/index.mjs"
+      },
+      "require": {
+        "types": "./dist/tooltip/index.d.cts",
+        "default": "./dist/tooltip/index.cjs"
+      }
+    },
     "./package.json": "./package.json"
   },
   "files": [
     "dist",
+    "docs/api",
     "README.md",
+    "CHANGELOG.md",
+    "COMPOSITION.md",
+    "STYLING.md",
+    "THEMING.md",
     "LICENSE"
   ],
   "keywords": [
@@ -56,7 +368,7 @@
     "url": "https://github.com/arif-js/Raditail-UI/issues"
   },
   "sideEffects": [
-    "*.css"
+    "**/*.css"
   ],
   "scripts": {
     "dev": "storybook dev -p 6006",
@@ -65,6 +377,13 @@
     "test": "vitest run",
     "test:watch": "vitest --watch",
     "build": "pnpm clean && tsup && node ./scripts/add-use-client.mjs && node ./scripts/copy-theme-css.mjs",
+    "bundle:budget": "node ./scripts/bundle-budget.mjs",
+    "sync:exports": "node ./scripts/sync-exports.mjs",
+    "test:consumer": "node ./scripts/consumer-smoke.mjs",
+    "lint:pkg": "publint",
+    "check:types": "attw --pack . --profile node16 --exclude-entrypoints theme/tailwind.css theme/styles.css",
+    "docs:api": "typedoc",
+    "prepack": "pnpm docs:api",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build -c .storybook -o storybook-static",
     "clean": "rimraf dist"
@@ -96,15 +415,92 @@
     "lucide-react": "^0.525.0",
     "react": "^18.2.0 || ^19.0.0",
     "react-dom": "^18.2.0 || ^19.0.0",
-    "tailwindcss": "^3.4.0 || ^4.0.0"
+    "tailwindcss": "^3.4.0"
   },
-  "peerDependenciesMeta": {},
+  "peerDependenciesMeta": {
+    "@radix-ui/react-accordion": {
+      "optional": true
+    },
+    "@radix-ui/react-alert-dialog": {
+      "optional": true
+    },
+    "@radix-ui/react-avatar": {
+      "optional": true
+    },
+    "@radix-ui/react-checkbox": {
+      "optional": true
+    },
+    "@radix-ui/react-collapsible": {
+      "optional": true
+    },
+    "@radix-ui/react-context-menu": {
+      "optional": true
+    },
+    "@radix-ui/react-dialog": {
+      "optional": true
+    },
+    "@radix-ui/react-dropdown-menu": {
+      "optional": true
+    },
+    "@radix-ui/react-hover-card": {
+      "optional": true
+    },
+    "@radix-ui/react-navigation-menu": {
+      "optional": true
+    },
+    "@radix-ui/react-popover": {
+      "optional": true
+    },
+    "@radix-ui/react-progress": {
+      "optional": true
+    },
+    "@radix-ui/react-radio-group": {
+      "optional": true
+    },
+    "@radix-ui/react-scroll-area": {
+      "optional": true
+    },
+    "@radix-ui/react-select": {
+      "optional": true
+    },
+    "@radix-ui/react-separator": {
+      "optional": true
+    },
+    "@radix-ui/react-slider": {
+      "optional": true
+    },
+    "@radix-ui/react-slot": {
+      "optional": true
+    },
+    "@radix-ui/react-switch": {
+      "optional": true
+    },
+    "@radix-ui/react-tabs": {
+      "optional": true
+    },
+    "@radix-ui/react-toast": {
+      "optional": true
+    },
+    "@radix-ui/react-toggle-group": {
+      "optional": true
+    },
+    "@radix-ui/react-tooltip": {
+      "optional": true
+    },
+    "lucide-react": {
+      "optional": true
+    },
+    "tailwindcss": {
+      "optional": true
+    }
+  },
   "dependencies": {
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "tailwind-merge": "^2.5.4"
   },
   "devDependencies": {
+    "@arethetypeswrong/cli": "^0.18.5",
     "@radix-ui/react-accordion": "^1.1.1",
     "@radix-ui/react-alert-dialog": "^1.0.5",
     "@radix-ui/react-avatar": "^1.0.5",
@@ -142,13 +538,17 @@
     "@types/react-dom": "^18.3.2",
     "@vitejs/plugin-react": "^4.3.3",
     "autoprefixer": "^10.4.20",
+    "esbuild": "^0.28.2",
     "happy-dom": "^15.11.7",
     "lucide-react": "^0.525.0",
     "postcss": "^8.4.47",
+    "publint": "^0.3.24",
     "rimraf": "^6.0.1",
     "storybook": "^8.6.14",
     "tailwindcss": "^3.4.14",
     "tsup": "^8.5.0",
+    "typedoc": "^0.28.20",
+    "typedoc-plugin-markdown": "^4.13.0",
     "typescript": "^5.6.3",
     "vite": "^5.4.10",
     "vitest": "^2.1.4"

@@ -1,1 +1,7 @@
 .vercel
+
+# Internal audit reports - not published, not tracked in a public repo
+/docs/audit-*.md
+
+# Generated API reference - rebuilt by `pnpm docs:api` and by `prepack`
+/docs/api

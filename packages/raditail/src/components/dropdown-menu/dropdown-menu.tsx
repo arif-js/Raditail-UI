@@ -104,7 +104,7 @@ export const DropdownMenu: React.FC<DropdownMenuProps> = ({
   </DropdownMenuContext.Provider>
 )
 
-DropdownMenu.displayName = DropdownMenuPrimitive.Root.displayName
+DropdownMenu.displayName = 'DropdownMenu'
 
 export const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger
 export const DropdownMenuGroup = DropdownMenuPrimitive.Group
@@ -125,7 +125,7 @@ export const DropdownMenuSubTrigger = React.forwardRef<
     <DropdownMenuPrimitive.SubTrigger
       ref={ref}
       className={cn(
-        'flex cursor-default select-none items-center gap-2 rounded-[var(--rt-radius-sm)] text-[--rt-foreground] outline-none focus:bg-[--rt-muted-bg] data-[state=open]:bg-[--rt-muted-bg]',
+        'flex cursor-default select-none items-center gap-2 rounded-[var(--rt-radius-sm)] text-[var(--rt-foreground)] outline-none focus:bg-[var(--rt-muted-bg)] data-[state=open]:bg-[var(--rt-muted-bg)]',
         menuItemSizeClasses[resolvedSize],
         inset && 'pl-8',
         className
@@ -139,8 +139,7 @@ export const DropdownMenuSubTrigger = React.forwardRef<
   )
 })
 
-DropdownMenuSubTrigger.displayName =
-  DropdownMenuPrimitive.SubTrigger.displayName
+DropdownMenuSubTrigger.displayName = 'DropdownMenuSubTrigger'
 
 export const DropdownMenuSubContent = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.SubContent>,
@@ -149,15 +148,14 @@ export const DropdownMenuSubContent = React.forwardRef<
   <DropdownMenuPrimitive.SubContent
     ref={ref}
     className={cn(
-      'z-50 min-w-[8rem] rounded-[var(--rt-radius-md)] border border-[--rt-border-color] bg-[--rt-bg] p-1 text-[--rt-foreground] shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out',
+      'z-50 min-w-[8rem] rounded-[var(--rt-radius-md)] border border-[var(--rt-border-color)] bg-[var(--rt-bg)] p-1 text-[var(--rt-foreground)] shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out',
       className
     )}
     {...props}
   />
 ))
 
-DropdownMenuSubContent.displayName =
-  DropdownMenuPrimitive.SubContent.displayName
+DropdownMenuSubContent.displayName = 'DropdownMenuSubContent'
 
 export const DropdownMenuContent = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.Content>,
@@ -180,7 +178,7 @@ export const DropdownMenuContent = React.forwardRef<
         sideOffset={sideOffset}
         align={resolvedAlign}
         className={cn(
-          'z-50 min-w-[10rem] rounded-[var(--rt-radius-md)] border border-[--rt-border-color] bg-[--rt-bg] p-1 text-[--rt-foreground] shadow-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[side=top]:origin-bottom data-[side=bottom]:origin-top data-[side=right]:origin-left data-[side=left]:origin-right data-[align=end]:origin-top-right data-[align=start]:origin-top-left',
+          'z-50 min-w-[10rem] rounded-[var(--rt-radius-md)] border border-[var(--rt-border-color)] bg-[var(--rt-bg)] p-1 text-[var(--rt-foreground)] shadow-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[side=top]:origin-bottom data-[side=bottom]:origin-top data-[side=right]:origin-left data-[side=left]:origin-right data-[align=end]:origin-top-right data-[align=start]:origin-top-left',
           className
         )}
         data-size={resolvedSize}
@@ -190,7 +188,7 @@ export const DropdownMenuContent = React.forwardRef<
   )
 })
 
-DropdownMenuContent.displayName = DropdownMenuPrimitive.Content.displayName
+DropdownMenuContent.displayName = 'DropdownMenuContent'
 
 export const DropdownMenuItem = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.Item>,
@@ -205,7 +203,7 @@ export const DropdownMenuItem = React.forwardRef<
     <DropdownMenuPrimitive.Item
       ref={ref}
       className={cn(
-        'relative flex cursor-default select-none items-center gap-2 rounded-[var(--rt-radius-sm)] text-[--rt-foreground] outline-none focus:bg-[--rt-muted-bg] data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+        'relative flex cursor-default select-none items-center gap-2 rounded-[var(--rt-radius-sm)] text-[var(--rt-foreground)] outline-none focus:bg-[var(--rt-muted-bg)] data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
         menuItemSizeClasses[resolvedSize],
         inset && 'pl-8',
         className
@@ -216,7 +214,7 @@ export const DropdownMenuItem = React.forwardRef<
   )
 })
 
-DropdownMenuItem.displayName = DropdownMenuPrimitive.Item.displayName
+DropdownMenuItem.displayName = 'DropdownMenuItem'
 
 export const DropdownMenuCheckboxItem = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.CheckboxItem>,
@@ -230,7 +228,7 @@ export const DropdownMenuCheckboxItem = React.forwardRef<
     <DropdownMenuPrimitive.CheckboxItem
       ref={ref}
       className={cn(
-        'relative flex cursor-default select-none items-center gap-2 rounded-[var(--rt-radius-sm)] pl-8 pr-2 text-[--rt-foreground] outline-none focus:bg-[--rt-muted-bg] data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+        'relative flex cursor-default select-none items-center gap-2 rounded-[var(--rt-radius-sm)] pl-8 pr-2 text-[var(--rt-foreground)] outline-none focus:bg-[var(--rt-muted-bg)] data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
         menuItemSizeClasses[resolvedSize],
         className
       )}
@@ -248,8 +246,7 @@ export const DropdownMenuCheckboxItem = React.forwardRef<
   )
 })
 
-DropdownMenuCheckboxItem.displayName =
-  DropdownMenuPrimitive.CheckboxItem.displayName
+DropdownMenuCheckboxItem.displayName = 'DropdownMenuCheckboxItem'
 
 export const DropdownMenuRadioItem = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.RadioItem>,
@@ -263,7 +260,7 @@ export const DropdownMenuRadioItem = React.forwardRef<
     <DropdownMenuPrimitive.RadioItem
       ref={ref}
       className={cn(
-        'relative flex cursor-default select-none items-center gap-2 rounded-[var(--rt-radius-sm)] pl-8 pr-2 text-[--rt-foreground] outline-none focus:bg-[--rt-muted-bg] data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+        'relative flex cursor-default select-none items-center gap-2 rounded-[var(--rt-radius-sm)] pl-8 pr-2 text-[var(--rt-foreground)] outline-none focus:bg-[var(--rt-muted-bg)] data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
         menuItemSizeClasses[resolvedSize],
         className
       )}
@@ -280,7 +277,7 @@ export const DropdownMenuRadioItem = React.forwardRef<
   )
 })
 
-DropdownMenuRadioItem.displayName = DropdownMenuPrimitive.RadioItem.displayName
+DropdownMenuRadioItem.displayName = 'DropdownMenuRadioItem'
 
 export const DropdownMenuLabel = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.Label>,
@@ -306,7 +303,7 @@ export const DropdownMenuLabel = React.forwardRef<
   )
 })
 
-DropdownMenuLabel.displayName = DropdownMenuPrimitive.Label.displayName
+DropdownMenuLabel.displayName = 'DropdownMenuLabel'
 
 export const DropdownMenuSeparator = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.Separator>,
@@ -323,4 +320,19 @@ export const DropdownMenuSeparator = React.forwardRef<
   )
 })
 
-DropdownMenuSeparator.displayName = DropdownMenuPrimitive.Separator.displayName
+DropdownMenuSeparator.displayName = 'DropdownMenuSeparator'
+
+export const DropdownMenuShortcut = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLSpanElement>) => (
+  <span
+    className={cn(
+      'ml-auto text-xs tracking-widest text-[var(--rt-muted-foreground)]',
+      className
+    )}
+    {...props}
+  />
+)
+
+DropdownMenuShortcut.displayName = 'DropdownMenuShortcut'

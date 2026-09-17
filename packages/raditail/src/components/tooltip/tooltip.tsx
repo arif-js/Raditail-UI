@@ -39,8 +39,20 @@ export interface TooltipContentProps
       'content'
     >,
     VariantProps<typeof tooltipVariants> {
+  /** Size preset for the tooltip body. */
   size?: ComponentSize
+  /**
+   * Which side of the trigger the tooltip is placed on. Alias of Radix's `side`;
+   * `placement` wins when both are set.
+   */
   placement?: 'top' | 'right' | 'bottom' | 'left'
+  /**
+   * The tooltip body.
+   *
+   * `content` and `children` are interchangeable — pass whichever reads better.
+   * Both are supported so the component stays compatible with the `children`
+   * convention Radix users expect; `content` wins when both are supplied.
+   */
   content?: React.ReactNode
 }
 
@@ -85,4 +97,4 @@ export const TooltipContent = React.forwardRef<
   }
 )
 
-TooltipContent.displayName = TooltipPrimitive.Content.displayName
+TooltipContent.displayName = 'TooltipContent'

@@ -1,5 +1,3 @@
-'use client'
-
 import * as DialogPrimitive from '@radix-ui/react-dialog'
 import { XIcon } from 'lucide-react'
 import * as React from 'react'
@@ -24,7 +22,7 @@ export const DialogOverlay = React.forwardRef<
   />
 ))
 
-DialogOverlay.displayName = DialogPrimitive.Overlay.displayName
+DialogOverlay.displayName = 'DialogOverlay'
 
 export interface DialogContentProps
   extends React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content> {
@@ -36,6 +34,14 @@ export interface DialogContentProps
   dismissable?: boolean
   /**
    * Render an accessible close button in the top-right corner of the dialog.
+   *
+   * **Defaults to `false`**, so a dialog rendered without this prop has no
+   * visible close affordance — Escape and clicking the overlay are the only
+   * exits. Pass `showCloseButton` explicitly for anything a user needs to back
+   * out of deliberately.
+   *
+   * This default is scheduled to flip to `true` in 1.0; it is not changed in a
+   * minor because that would alter rendering for existing consumers.
    */
   showCloseButton?: boolean
   /**
@@ -154,7 +160,7 @@ export const DialogContent = React.forwardRef<
   }
 )
 
-DialogContent.displayName = DialogPrimitive.Content.displayName
+DialogContent.displayName = 'DialogContent'
 
 export const DialogHeader = ({
   className,
@@ -193,7 +199,7 @@ export const DialogTitle = React.forwardRef<
   />
 ))
 
-DialogTitle.displayName = DialogPrimitive.Title.displayName
+DialogTitle.displayName = 'DialogTitle'
 
 export const DialogDescription = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Description>,
@@ -206,4 +212,4 @@ export const DialogDescription = React.forwardRef<
   />
 ))
 
-DialogDescription.displayName = DialogPrimitive.Description.displayName
+DialogDescription.displayName = 'DialogDescription'

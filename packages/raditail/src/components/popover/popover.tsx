@@ -34,4 +34,4 @@ export const PopoverContent = React.forwardRef<
   }
 )
 
-PopoverContent.displayName = PopoverPrimitive.Content.displayName
+PopoverContent.displayName = 'PopoverContent'

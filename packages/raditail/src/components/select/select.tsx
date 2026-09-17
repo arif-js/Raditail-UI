@@ -17,7 +17,7 @@ export const SelectTrigger = React.forwardRef<
   <SelectPrimitive.Trigger
     ref={ref}
     className={cn(
-      'inline-flex w-full items-center justify-between gap-2 rounded-[var(--rt-radius-md)] border border-[--rt-border-color] bg-[--rt-bg] text-[--rt-foreground] shadow-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-rt-primary/40 disabled:cursor-not-allowed disabled:opacity-50',
+      'inline-flex w-full items-center justify-between gap-2 rounded-[var(--rt-radius-md)] border border-[var(--rt-border-color)] bg-[var(--rt-bg)] text-[var(--rt-foreground)] shadow-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-rt-primary/40 disabled:cursor-not-allowed disabled:opacity-50',
       fieldSizeClasses[size],
       className
     )}
@@ -37,7 +37,7 @@ export const SelectTrigger = React.forwardRef<
   </SelectPrimitive.Trigger>
 ))
 
-SelectTrigger.displayName = SelectPrimitive.Trigger.displayName
+SelectTrigger.displayName = 'SelectTrigger'
 
 export const SelectContent = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Content>,
@@ -48,7 +48,7 @@ export const SelectContent = React.forwardRef<
       ref={ref}
       position={position}
       className={cn(
-        'z-50 min-w-[8rem] overflow-hidden rounded-[var(--rt-radius-md)] border border-[--rt-border-color] bg-[--rt-bg] text-[--rt-foreground] shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=open]:fade-in data-[state=closed]:fade-out data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95',
+        'z-50 min-w-[8rem] overflow-hidden rounded-[var(--rt-radius-md)] border border-[var(--rt-border-color)] bg-[var(--rt-bg)] text-[var(--rt-foreground)] shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=open]:fade-in data-[state=closed]:fade-out data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95',
         className
       )}
       {...props}
@@ -60,7 +60,7 @@ export const SelectContent = React.forwardRef<
   </SelectPrimitive.Portal>
 ))
 
-SelectContent.displayName = SelectPrimitive.Content.displayName
+SelectContent.displayName = 'SelectContent'
 
 export const SelectLabel = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Label>,
@@ -76,7 +76,7 @@ export const SelectLabel = React.forwardRef<
   />
 ))
 
-SelectLabel.displayName = SelectPrimitive.Label.displayName
+SelectLabel.displayName = 'SelectLabel'
 
 export const SelectItem = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Item>,
@@ -85,7 +85,7 @@ export const SelectItem = React.forwardRef<
   <SelectPrimitive.Item
     ref={ref}
     className={cn(
-      'relative flex w-full cursor-default select-none items-center gap-2 rounded-[var(--rt-radius-sm)] px-2 py-1.5 text-sm text-[--rt-foreground] outline-none focus:bg-[--rt-muted-bg] focus:text-[--rt-foreground] data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+      'relative flex w-full cursor-default select-none items-center gap-2 rounded-[var(--rt-radius-sm)] px-2 py-1.5 text-sm text-[var(--rt-foreground)] outline-none focus:bg-[var(--rt-muted-bg)] focus:text-[var(--rt-foreground)] data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
       className
     )}
     {...props}
@@ -99,7 +99,7 @@ export const SelectItem = React.forwardRef<
   </SelectPrimitive.Item>
 ))
 
-SelectItem.displayName = SelectPrimitive.Item.displayName
+SelectItem.displayName = 'SelectItem'
 
 export const SelectSeparator = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Separator>,
@@ -112,4 +112,4 @@ export const SelectSeparator = React.forwardRef<
   />
 ))
 
-SelectSeparator.displayName = SelectPrimitive.Separator.displayName
+SelectSeparator.displayName = 'SelectSeparator'

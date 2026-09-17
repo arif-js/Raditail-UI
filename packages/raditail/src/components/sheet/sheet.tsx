@@ -18,7 +18,7 @@ export const SheetOverlay = React.forwardRef<
   />
 ))
 
-SheetOverlay.displayName = DialogPrimitive.Overlay.displayName
+SheetOverlay.displayName = 'SheetOverlay'
 
 export interface SheetContentProps
   extends React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content> {
@@ -52,7 +52,7 @@ export const SheetContent = React.forwardRef<
   </SheetPortal>
 ))
 
-SheetContent.displayName = DialogPrimitive.Content.displayName
+SheetContent.displayName = 'SheetContent'
 
 export const SheetHeader = ({
   className,
@@ -85,7 +85,7 @@ export const SheetTitle = React.forwardRef<
   />
 ))
 
-SheetTitle.displayName = DialogPrimitive.Title.displayName
+SheetTitle.displayName = 'SheetTitle'
 
 export const SheetDescription = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Description>,
@@ -98,4 +98,4 @@ export const SheetDescription = React.forwardRef<
   />
 ))
 
-SheetDescription.displayName = DialogPrimitive.Description.displayName
+SheetDescription.displayName = 'SheetDescription'

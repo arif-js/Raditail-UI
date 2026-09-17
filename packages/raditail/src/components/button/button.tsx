@@ -31,6 +31,11 @@ export const buttonVariants = cva(
         lg: 'h-11 rounded-[var(--rt-radius-lg)] px-6 text-base',
       },
       loading: {
+        /**
+         * @deprecated Styling-only variant that just sets `cursor-progress`.
+         * Use the `isLoading` prop instead — it renders the spinner, disables the
+         * button and sets `aria-busy`. Kept working until 1.0.
+         */
         true: 'cursor-progress',
       },
     },
@@ -143,6 +148,19 @@ const iconOnlySizeClasses: Record<'sm' | 'md' | 'lg', string> = {
   lg: 'data-[icon-only=true]:w-11',
 }
 
+let hasWarnedAboutLoadingVariant = false
+
+function warnLoadingVariantDeprecated() {
+  if (process.env.NODE_ENV === 'production' || hasWarnedAboutLoadingVariant) {
+    return
+  }
+  hasWarnedAboutLoadingVariant = true
+  console.warn(
+    '[raditail] The `loading` prop on Button is deprecated and will be removed in 1.0. ' +
+      'Use `isLoading` instead: it renders the spinner, disables the button and sets `aria-busy`.'
+  )
+}
+
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
@@ -150,6 +168,11 @@ export interface ButtonProps
   asChild?: boolean
   /** Display a loading state; keeps the button focusable. */
   isLoading?: boolean
+  /**
+   * @deprecated Use `isLoading` instead. This only applies a `cursor-progress`
+   * style and is removed in 1.0.
+   */
+  loading?: boolean
   /** Optional icon rendered alongside the button label. */
   icon?: React.ReactNode
   /** Position of the icon relative to the label when both are present. */
@@ -176,6 +199,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       colorScheme,
       asChild = false,
       isLoading = false,
+      loading,
       disabled,
       children,
       icon,
@@ -186,6 +210,12 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ) => {
     const Comp = asChild ? Slot : 'button'
     const resolvedSize: NonNullable<ButtonProps['size']> = size ?? 'md'
+
+    // `loading` is destructured rather than forwarded so it cannot reach the DOM
+    // element as an unknown attribute.
+    if (loading) {
+      warnLoadingVariantDeprecated()
+    }
     const labelNodes = React.Children.toArray(children).filter((child) => {
       if (child === null || child === undefined) return false
       if (typeof child === 'string') return child.trim().length > 0
@@ -213,7 +243,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             variant,
             size: resolvedSize,
             colorScheme: colorScheme ?? 'default',
-            loading: isLoading ? true : undefined,
+            loading: isLoading || loading ? true : undefined,
           }),
           iconOnlySizeClasses[resolvedSize],
           showIcon && hasLabel && 'gap-2',

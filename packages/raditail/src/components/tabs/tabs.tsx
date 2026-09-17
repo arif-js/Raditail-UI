@@ -11,14 +11,14 @@ export const TabsList = React.forwardRef<
   <TabsPrimitive.List
     ref={ref}
     className={cn(
-      'inline-flex h-10 items-center justify-center gap-1 rounded-[var(--rt-radius-md)] bg-[--rt-muted-bg] p-1 text-sm text-[--rt-muted-foreground]',
+      'inline-flex h-10 items-center justify-center gap-1 rounded-[var(--rt-radius-md)] bg-[var(--rt-muted-bg)] p-1 text-sm text-[var(--rt-muted-foreground)]',
       className
     )}
     {...props}
   />
 ))
 
-TabsList.displayName = TabsPrimitive.List.displayName
+TabsList.displayName = 'TabsList'
 
 export const TabsTrigger = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.Trigger>,
@@ -27,14 +27,14 @@ export const TabsTrigger = React.forwardRef<
   <TabsPrimitive.Trigger
     ref={ref}
     className={cn(
-      'flex min-w-[6rem] flex-1 items-center justify-center whitespace-nowrap rounded-[var(--rt-radius-sm)] px-3 py-2 font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rt-primary/40 data-[state=active]:bg-[--rt-bg] data-[state=active]:text-[--rt-foreground] data-[state=inactive]:text-[--rt-muted-foreground] disabled:pointer-events-none disabled:opacity-50',
+      'flex min-w-[6rem] flex-1 items-center justify-center whitespace-nowrap rounded-[var(--rt-radius-sm)] px-3 py-2 font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rt-primary/40 data-[state=active]:bg-[var(--rt-bg)] data-[state=active]:text-[var(--rt-foreground)] data-[state=inactive]:text-[var(--rt-muted-foreground)] disabled:pointer-events-none disabled:opacity-50',
       className
     )}
     {...props}
   />
 ))
 
-TabsTrigger.displayName = TabsPrimitive.Trigger.displayName
+TabsTrigger.displayName = 'TabsTrigger'
 
 export const TabsContent = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.Content>,
@@ -43,11 +43,11 @@ export const TabsContent = React.forwardRef<
   <TabsPrimitive.Content
     ref={ref}
     className={cn(
-      'mt-4 rounded-[var(--rt-radius-md)] border border-[--rt-border-color] bg-[--rt-bg] p-4 text-sm text-[--rt-foreground]',
+      'mt-4 rounded-[var(--rt-radius-md)] border border-[var(--rt-border-color)] bg-[var(--rt-bg)] p-4 text-sm text-[var(--rt-foreground)]',
       className
     )}
     {...props}
   />
 ))
 
-TabsContent.displayName = TabsPrimitive.Content.displayName
+TabsContent.displayName = 'TabsContent'

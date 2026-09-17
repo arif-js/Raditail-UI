@@ -5,8 +5,13 @@ on:
     branches: [main]
   pull_request:
 
+env:
+  # The package builds identically on every supported Node version; pinning the
+  # toolchain here keeps the non-matrix jobs reproducible.
+  NODE_VERSION: 20
+
 jobs:
-  build:
+  quality:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -18,7 +23,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: ${{ env.NODE_VERSION }}
           cache: pnpm
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -32,3 +37,60 @@ jobs:
         run: pnpm --filter raditail build
       - name: Build docs
         run: pnpm --filter docs build
+
+  # Packaging metadata is checked against the built output: publint and attw both
+  # read the manifest's `exports`/`types` targets, and the bundle budget reads
+  # `dist/`.
+  packaging:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9.12.1
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Build library
+        run: pnpm --filter raditail build
+      - name: Lint package metadata
+        run: pnpm --filter raditail lint:pkg
+      - name: Check type resolution
+        run: pnpm --filter raditail check:types
+      - name: Check bundle budget
+        run: pnpm --filter raditail bundle:budget
+
+  # The only job that exercises the real install path. Runs on every supported
+  # Node version because an over-narrow `engines` range silently changes which
+  # version consumers resolve from the registry.
+  consumer-smoke:
+    name: consumer smoke (node ${{ matrix.node }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [20, 22, 24]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9.12.1
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Build library
+        run: pnpm --filter raditail build
+      - name: Pack and consume
+        run: pnpm --filter raditail test:consumer

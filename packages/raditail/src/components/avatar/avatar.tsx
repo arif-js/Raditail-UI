@@ -90,7 +90,7 @@ export const Avatar = React.forwardRef<
   }
 )
 
-Avatar.displayName = AvatarPrimitive.Root.displayName
+Avatar.displayName = 'Avatar'
 
 export const AvatarImage = React.forwardRef<
   React.ElementRef<typeof AvatarPrimitive.Image>,
@@ -103,7 +103,7 @@ export const AvatarImage = React.forwardRef<
   />
 ))
 
-AvatarImage.displayName = AvatarPrimitive.Image.displayName
+AvatarImage.displayName = 'AvatarImage'
 
 export const AvatarFallback = React.forwardRef<
   React.ElementRef<typeof AvatarPrimitive.Fallback>,
@@ -112,14 +112,14 @@ export const AvatarFallback = React.forwardRef<
   <AvatarPrimitive.Fallback
     ref={ref}
     className={cn(
-      'flex h-full w-full items-center justify-center bg-[--rt-muted-bg] text-sm font-medium text-[var(--rt-muted-foreground)]',
+      'flex h-full w-full items-center justify-center bg-[var(--rt-muted-bg)] text-sm font-medium text-[var(--rt-muted-foreground)]',
       className
     )}
     {...props}
   />
 ))
 
-AvatarFallback.displayName = AvatarPrimitive.Fallback.displayName
+AvatarFallback.displayName = 'AvatarFallback'
 
 function getInitialsFromName(name: string) {
   return (

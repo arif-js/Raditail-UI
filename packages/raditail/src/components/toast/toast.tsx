@@ -36,7 +36,7 @@ export const ToastViewport = React.forwardRef<
   />
 ))
 
-ToastViewport.displayName = ToastPrimitive.Viewport.displayName
+ToastViewport.displayName = 'ToastViewport'
 
 const toastVariants = cva(
   'relative flex w-full min-w-0 items-start gap-3 rounded-[var(--rt-radius-lg)] border p-4 shadow-lg transition data-[state=closed]:translate-y-2 data-[state=closed]:opacity-0 data-[state=open]:translate-y-0 data-[state=open]:opacity-100',
@@ -78,7 +78,7 @@ export const Toast = React.forwardRef<
   />
 ))
 
-Toast.displayName = ToastPrimitive.Root.displayName
+Toast.displayName = 'Toast'
 
 export const ToastTitle = React.forwardRef<
   React.ElementRef<typeof ToastPrimitive.Title>,
@@ -91,7 +91,7 @@ export const ToastTitle = React.forwardRef<
   />
 ))
 
-ToastTitle.displayName = ToastPrimitive.Title.displayName
+ToastTitle.displayName = 'ToastTitle'
 
 export const ToastDescription = React.forwardRef<
   React.ElementRef<typeof ToastPrimitive.Description>,
@@ -104,7 +104,7 @@ export const ToastDescription = React.forwardRef<
   />
 ))
 
-ToastDescription.displayName = ToastPrimitive.Description.displayName
+ToastDescription.displayName = 'ToastDescription'
 
 export const ToastAction = React.forwardRef<
   React.ElementRef<typeof ToastPrimitive.Action>,
@@ -120,7 +120,7 @@ export const ToastAction = React.forwardRef<
   />
 ))
 
-ToastAction.displayName = ToastPrimitive.Action.displayName
+ToastAction.displayName = 'ToastAction'
 
 export const ToastClose = React.forwardRef<
   React.ElementRef<typeof ToastPrimitive.Close>,
@@ -138,4 +138,4 @@ export const ToastClose = React.forwardRef<
   </ToastPrimitive.Close>
 ))
 
-ToastClose.displayName = ToastPrimitive.Close.displayName
+ToastClose.displayName = 'ToastClose'
